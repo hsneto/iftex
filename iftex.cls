@@ -29,7 +29,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[01/12/2018 v1.0 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[06/09/2018 v1.0.1 Modelo de TCC baseado em abnTeX2]
 
 % --------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2 %
