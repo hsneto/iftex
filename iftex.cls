@@ -206,7 +206,6 @@
 % --------------------------------------------------- %
 
 \renewcommand{\imprimirfolhaderosto}{
-  \begin{center}
     
     \centering  	
     \vspace*{2.0cm}
@@ -239,7 +238,7 @@
     
     \imprimirlocal\par\imprimirdata
 
-  \end{center}}
+}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
