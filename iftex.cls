@@ -323,7 +323,50 @@
 % Subsubsection
 \setlength{\aftersubsubsecskip}{15pt}
 % \setlength{\beforesubsubsecskip}{15pt}
-   
+
+% --------------------------------------------------- %
+% CONFIGURAÇÕES DO SUMÁRIO %
+% --------------------------------------------------- %
+
+\renewcommand{\cftpartfont}{\bfseries\normalsize}
+% 
+\renewcommand{\cftchapterfont}{\bfseries\normalsize}
+\renewcommand{\cftchapterpagefont}{\cftchapterfont}
+% 
+\renewcommand{\cftsectionfont}{\mdseries\normalsize}
+\renewcommand{\cftsectionpagefont}{\cftsectionfont}
+% 
+\renewcommand{\cftsubsectionfont}{\bfseries\normalsize}
+\renewcommand{\cftsubsectionpagefont}{\mdseries\cftsubsectionfont}
+% 
+\renewcommand{\cftsubsubsectionfont}{\mdseries\normalsize}
+\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
+% 
+\renewcommand{\cftparagraphfont}{\itshape\mdseries\normalsize}
+\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
+% 
+\setlength{\cftbeforechapterskip}{0em}
+
+%% O código a seguir configura faz com que os títulos das sections fiquem em caixa alta no sumário
+% Agradecimentos ao usuário anônimo em:
+% https://tex.stackexchange.com/questions/399828/how-to-make-the-table-of-contents-section-title-upper-case-without-messing-with/399861
+
+\makeatletter
+\let\oldcontentsline\contentsline
+\def\contentsline#1#2{%
+\expandafter\ifx\csname l@#1\endcsname\l@section
+\expandafter\@firstoftwo
+\else
+\expandafter\@secondoftwo
+\fi
+{%
+\oldcontentsline{#1}{\MakeTextUppercase{#2}}%
+}{%
+\oldcontentsline{#1}{#2}%
+}%
+}
+\makeatother
+
 % --------------------------------------------------- %
 % COMPILA O ÍNDICE %
 % --------------------------------------------------- %
