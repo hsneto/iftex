@@ -206,7 +206,7 @@
 % --------------------------------------------------- %
 
 \renewcommand{\imprimirfolhaderosto}{
-    
+    \begin{folhaderosto}
     \centering  	
     \vspace*{2.0cm}
 
@@ -237,7 +237,7 @@
     \vfill
     
     \imprimirlocal\par\imprimirdata
-
+    \end{folhaderosto}
 }
 
 % --------------------------------------------------- %
