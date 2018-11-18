@@ -346,7 +346,7 @@
 % 
 \setlength{\cftbeforechapterskip}{0em}
 
-%% O código a seguir configura faz com que os títulos das sections fiquem em caixa alta no sumário
+%% O código a seguir faz com que os títulos das sections fiquem em caixa alta no sumário
 % Agradecimentos ao usuário anônimo em:
 % https://tex.stackexchange.com/questions/399828/how-to-make-the-table-of-contents-section-title-upper-case-without-messing-with/399861
 
