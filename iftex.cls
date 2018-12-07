@@ -187,7 +187,7 @@
     
     \centering  	
 	{\MakeUppercase\imprimirinstituicao
-    \par
+    \\
     \MakeUppercase\imprimircurso}
 	\vspace*{3.0cm}
 
@@ -197,7 +197,7 @@
     {\bfseries\MakeUppercase\imprimirtitulo}
     \vfill
 	    
-    \imprimirlocal\par\imprimirdata
+    \imprimirlocal \\ \imprimirdata
 
 \end{capa}}
 
@@ -206,7 +206,8 @@
 % --------------------------------------------------- %
 
 \renewcommand{\imprimirfolhaderosto}{
-    \begin{folhaderosto}
+  \begin{folhaderosto}
+   
     \centering  	
     \vspace*{2.0cm}
 
@@ -235,10 +236,11 @@
       \end{minipage}}%
 
     \vfill
-    
-    \imprimirlocal\par\imprimirdata
-    \end{folhaderosto}
-}
+
+    \imprimirlocal \\ \imprimirdata
+
+  \end{folhaderosto}}
+
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
