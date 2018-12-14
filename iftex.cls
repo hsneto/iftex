@@ -309,7 +309,7 @@
 \setlength{\cftbeforepartskip}{0pt}
 
 % Chapter
-\setlength{\afterchapskip}{15pt}
+\setlength{\afterchapskip}{0pt}
 % \setlength{\beforechapskip}{15pt}
 
 % Section
