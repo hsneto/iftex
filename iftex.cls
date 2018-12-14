@@ -115,16 +115,16 @@
 % Títulos 
 \renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
 
-\renewcommand*{\chapnumfont}{\normalfont\large\bfseries}
-\renewcommand*{\chaptitlefont}{\normalfont\large\bfseries}
+\renewcommand*{\chapnumfont}{\normalfont\normalsize\bfseries}
+\renewcommand*{\chaptitlefont}{\normalfont\normalsize\bfseries}
 
-\setsecheadstyle{\normalfont\large\MakeUppercase}
+\setsecheadstyle{\normalfont\normalsize\MakeUppercase}
 \renewcommand\cftsectionfont{\normalfont\normalsize\Capitalize}
 
-\setsubsecheadstyle{\normalfont\large\bfseries}
+\setsubsecheadstyle{\normalfont\normalsize\bfseries}
 \renewcommand\cftsubsectionfont{\normalfont\normalsize\bfseries}
 
-\setsubsubsecheadstyle{\normalfont\large}
+\setsubsubsecheadstyle{\normalfont\normalsize}
 \renewcommand\cftsubsubsectionfont{\normalfont\normalsize}
 
 \setsubsubsubsecheadstyle{\normalfont\itshape}
