@@ -5,6 +5,6 @@ Template de Trabalho de Conclusão de Curso de acordo com as [Normas para Aprese
 
 * **Humberto da Silva Neto**
 
-## License
+## Licença
 
-Este projeto está licenciado sob a licença LPPL - consulte o arquivo [LICENSE](https://github.com/hsneto/if-beamer/blob/master/LICENSE) para detalhes.
+Este projeto está licenciado sob a licença LPPL - consulte o arquivo [LICENSE](LICENSE) para detalhes.
