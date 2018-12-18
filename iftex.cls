@@ -18,7 +18,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[06/09/2018 v1.0.1 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.1 Modelo de TCC baseado em abnTeX2]
 
 % --------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2 %
@@ -35,6 +35,7 @@
 % PACKAGES %
 % --------------------------------------------------- %
 
+\usepackage{tocloft} 
 \usepackage{cmap}             % Mapear caracteres especiais no PDF
 \usepackage[utf8]{inputenc}   % Codificacao do documento
 \usepackage{lastpage}         % Para total de páginas
@@ -312,6 +313,12 @@
 % Subsubsection
 \setlength{\aftersubsubsecskip}{15pt}
 % \setlength{\beforesubsubsecskip}{15pt}
+
+% Adiciona hspace depois de titulos
+\addtocontents{toc}{\vspace{15pt}}
+\addtocontents{lof}{\vspace{15pt}}
+\addtocontents{lot}{\vspace{15pt}}
+\addtocontents{loq}{\vspace{15pt}}
    
 % --------------------------------------------------- %
 % COMPILA O ÍNDICE %
