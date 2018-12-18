@@ -1,0 +1,123 @@
+\chapter{{\normalfont EasyReview}}
+
+\lstset{
+		keywordstyle=\bfseries\color{purple!60!black},
+		commentstyle=\itshape\color{green!40!black},
+% 		identifierstyle=\itshape,
+		stringstyle=\itshape,
+		showstringspaces=false,
+		escapeinside={\%*}{*)},
+		columns=flexible,
+		breaklines=true,
+breakindent=0pt}
+
+\renewcommand\lstlistingname{Example}
+\newcommand{\keyword}[1]{\textbf{\color{purple!60!black}{#1}}}
+
+% ------
+\textbf{\uppercase {The alert command}}
+
+% ------
+Command intended to claim author's attention to a given part of the text. In the following, it is possible to see an example:
+
+\begin{center}
+\begin{minipage}[ht]{0.45\textwidth}
+\begin{lstlisting}[language=tex]
+A text without the alert command. %*\keyword{$\backslash$alert}*){A text with the alert command}.
+\end{lstlisting}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[ht]{0.45\textwidth}
+A text without the alert command. \alert{A text with the alert command}.
+\end{minipage}
+\end{center}
+
+% ------
+\textbf{\uppercase {The highlight command}}
+
+% ------
+Command intended to claim author's attention to a given part of the text in a different to the ``alert'' command. In the following, it is possible to see an example:
+
+\begin{center}
+\begin{minipage}[ht]{0.45\textwidth}
+\begin{lstlisting}[language=tex]
+A text without the highlight command. %*\keyword{$\backslash$highlight}*){A text with the highlight command}.
+\end{lstlisting}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[ht]{0.45\textwidth}
+A text without the highlight command. \highlight{A text with the highlight command}.
+\end{minipage}
+\end{center}
+
+% ------
+\textbf{\uppercase {The remove command}}
+
+% ------
+Command which an author suggest to remove a given part of the text. In the following, it is possible to see an example:
+
+\begin{center}
+\begin{minipage}[ht]{0.45\textwidth}
+\begin{lstlisting}[language=tex]
+This text is not to be removed. %*\keyword{$\backslash$remove}*){This text is to be removed}.
+\end{lstlisting}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[ht]{0.45\textwidth}
+This text is not to be removed. \remove{This text is to be removed}.
+\end{minipage}
+\end{center}
+
+% ------
+\textbf{\uppercase {The add command}}
+
+% ------
+Command which an author suggest to add new text in a given part of the text. In the following, it is possible to see an example:
+
+\begin{center}
+\begin{minipage}[ht]{0.45\textwidth}
+\begin{lstlisting}[language=tex]
+This text was already in the text. %*\keyword{$\backslash$add}*){This text is been added now}.
+\end{lstlisting}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[ht]{0.45\textwidth}
+This text was already in the text. \add{This text is been added now}.
+\end{minipage}
+\end{center}
+
+% ------
+\textbf{\uppercase {The replace/substitute command}}
+
+% ------
+Both commands are equivalent. It shall be used when an author suggest to replace a given part of the text for a newer one. In the following, it is possible to see an example:
+
+\begin{center}
+\begin{minipage}[ht]{0.45\textwidth}
+\begin{lstlisting}[language=tex]
+%*\keyword{$\backslash$replace}*){This part of the text needs to be replaced}{for this newer part of the text}.
+\end{lstlisting}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[ht]{0.45\textwidth}
+\replace{This part of the text needs to be replaced}{for this newer part of the text}.
+\end{minipage}
+\end{center}
+
+% ------
+\textbf{\uppercase {The commentreview command}}
+
+% ------
+Command intended to claim author's attention to a given part of the text, giving some comments to provide more information. In the following, it is possible to see an example:
+
+\begin{center}
+\begin{minipage}[ht]{0.45\textwidth}
+\begin{lstlisting}[language=tex]
+%*\keyword{$\backslash$commentreview}*){This text will receive a comment.}{This is the comment I have!}.
+\end{lstlisting}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[ht]{0.45\textwidth}
+\commentreview{This text will receive a comment.}{This is the comment I have!}.
+\end{minipage}
+\end{center}
