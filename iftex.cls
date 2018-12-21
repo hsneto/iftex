@@ -176,18 +176,18 @@
   \begin{capa}
     
     \centering  	
-	{\MakeUppercase\imprimirinstituicao
-    \\
-    \MakeUppercase\imprimircurso}
-	\vspace*{3.0cm}
+    \MakeUppercase\imprimirinstituicao\\
+    \MakeUppercase\imprimircurso
+    \vspace*{3.0cm}
 
-    {\bfseries\MakeUppercase\imprimirautor}
+    \bfseries\MakeUppercase\imprimirautor
     \vspace*{3.5cm}
 
-    {\bfseries\MakeUppercase\imprimirtitulo}
+    \bfseries\MakeUppercase\imprimirtitulo
     \vfill
 	    
-    \imprimirlocal \\ \imprimirdata
+    \imprimirlocal\\
+    \imprimirdata
 
 \end{capa}}
 
