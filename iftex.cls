@@ -199,35 +199,34 @@
   \begin{folhaderosto}
     
     \centering  	
-    \vspace*{2.0cm}
 
-    {\bfseries\MakeUppercase\imprimirautor}
+    \MakeUppercase\imprimirautor
     \vspace*{3.5cm}
 
-    {\bfseries\MakeUppercase\imprimirtitulo}
+    \textbf{\MakeUppercase\imprimirtitulo}
     \vspace*{3.0cm}
-    
-    \abntex@ifnotempty{\imprimirpreambulo}{%
-      \hspace{.40\textwidth}
-      \begin{minipage}{9cm}
+
+    % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
+    % para a sua impressão.
+    \abntex@ifnotempty{\imprimirpreambulo}{
+      \raggedleft
+      \begin{minipage}{8cm}
         \footnotesize 
         \SingleSpacing
-        \imprimirpreambulo
-        \newline\newline
-        \imprimirorientador
-        \par
-        \ifthenelse{\equal{\imprimircoorientador}{}}
-        { 
-          % Não escreve nada se não tiver coorientador
-        }
-        {
-          \imprimircoorientador
-        }
-      \end{minipage}}%
+        \imprimirpreambulo\\
+
+        \normalsize
+        \imprimirorientador\\
+
+        % Se existir coorientador, imprima seu nome.
+        \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
+      }
+      \end{minipage}
 
     \vfill
-    
-    \imprimirlocal \\ \imprimirdata
+    \centering
+    \imprimirlocal\\
+    \imprimirdata
 
   \end{folhaderosto}}
 
