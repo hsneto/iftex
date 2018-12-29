@@ -180,10 +180,10 @@
     \MakeUppercase\imprimircurso
     \vspace*{3.0cm}
 
-    \bfseries\MakeUppercase\imprimirautor
+    \textbf{\MakeUppercase\imprimirautor}
     \vspace*{3.5cm}
 
-    \bfseries\MakeUppercase\imprimirtitulo
+    \textbf{\MakeUppercase\imprimirtitulo}
     \vfill
 	    
     \imprimirlocal\\
@@ -229,6 +229,74 @@
     \imprimirdata
 
   \end{folhaderosto}}
+
+% % --------------------------------------------------- %
+% % FICHA CATALOGRÁFICA
+% % --------------------------------------------------- %
+
+% \newcommand{\imprimirfichacatalografica}{
+%   \newpage
+    
+%   \centering
+%   \vspace*{\fill}
+
+%   \fbox{
+%     \begin{minipage}[c][]{15 cm}
+%       \vspace{12pt}
+%       \small{xxxx \imprimirautor}
+%       \centering
+%       \begin{minipage}[c][]{13 cm}
+%         \small
+%         \hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+%         \imprimirlocal, \imprimirdata.\\
+
+%         \hspace{0.5cm}  \pageref{LastPage} f: il; 30 cm.\\
+        
+%         \hspace{0.5cm} \imprimirorientador\\
+
+%         \hspace{0.5cm} \imprimirtipotrabalho~--~\imprimirinstituicao, \imprimircurso, \imprimirdata.\\
+
+%         % \hspace{0.5cm}
+%         % 1. \keywordone.
+%         % 2. \keywordtwo.
+%         % 3. \keywordthree.
+%         % 4. \keywordfour.
+%         % 5. \keywordfive.
+%         % 6. \keywordsix.
+%         % I. \profcitation.
+%         % II. \institution.
+%         % III. \@title
+
+%         \flushright{xxxx}
+%         \vspace{12pt}
+%       \end{minipage}
+%     \end{minipage}
+%   }
+% }
+
+%     % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
+%     % para a sua impressão.
+%     \abntex@ifnotempty{\imprimirpreambulo}{
+%       \raggedleft
+%       \begin{minipage}{8cm}
+%         \footnotesize 
+%         \SingleSpacing
+%         \imprimirpreambulo\\
+
+%         \normalsize
+%         \imprimirorientador\\
+
+%         % Se existir coorientador, imprima seu nome.
+%         \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
+%       }
+%       \end{minipage}
+
+%     \vfill
+%     \centering
+%     \imprimirlocal\\
+%     \imprimirdata
+
+%   \end{folhaderosto}}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
