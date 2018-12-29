@@ -282,8 +282,8 @@
 
         % Se existir coorientador, imprima seu nome.
         \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
-      }
       \end{minipage}
+    }
 
     \vfill
     \centering
