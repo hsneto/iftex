@@ -265,7 +265,7 @@
 % --------------------------------------------------- %
 
 \renewcommand{\imprimirfolhaderosto}{
-  \begin{folhaderosto}
+  % \begin{folhaderosto}
     
     \centering  	
 
@@ -297,73 +297,54 @@
     \imprimirlocal\\
     \imprimirdata
 
-  \end{folhaderosto}}
+  % \end{folhaderosto}
+}
 
 % % --------------------------------------------------- %
 % % FICHA CATALOGRÁFICA
 % % --------------------------------------------------- %
 
 \providecommand{\imprimirfichacatalografica}{
+  
   \begin{fichacatalografica}
-    
-   \vspace*{\fill}
 
-   \fbox{
-     \begin{minipage}[c][]{15 cm}
+    \vspace*{\fill}
 
-       \vspace{12pt}
-       \small{\imprimircutter~\imprimirautor}\\
+    \fbox{
+      \begin{minipage}[c][]{15 cm}
 
-       \centering\begin{minipage}[c][]{13 cm}
-
-         \setlength{\parindent}{0.5cm}
-         \small
-         
-         \imprimirtitulo  / \imprimirautor. --
-         \imprimirdata.\\
-
-         \pageref{LastPage} f: il; 30 cm.\\
-        
-         \imprimirorientador\\
-
-         \imprimirtipotrabalho~--~\imprimirinstituicao,
-         \imprimircurso, \imprimirdata.\\
-
-         \hspace{0.5cm}
-         \palavraschaveemitens
-         I. \imprimirorientador\ 
-         II. \imprimirinstituicao\ 
-         III. \imprimirtitulo
-
-        \flushright{CDD \imprimircdd}
         \vspace{12pt}
-       \end{minipage}
-     \end{minipage}
-   }
+        \small{\imprimircutter~\imprimirautor}\\
 
-%     % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
-%     % para a sua impressão.
-%     \abntex@ifnotempty{\imprimirpreambulo}{
-%       \raggedleft
-%       \begin{minipage}{8cm}
-%         \footnotesize 
-%         \SingleSpacing
-%         \imprimirpreambulo\\
+        \centering\begin{minipage}[c][]{13 cm}
 
-%         \normalsize
-%         \imprimirorientador\\
+          \setlength{\parindent}{0.5cm}
+          \small
+          
+          \imprimirtitulo  / \imprimirautor. --
+          \imprimirdata.\\
 
-%         % Se existir coorientador, imprima seu nome.
-%         \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
-%       }
-%       \end{minipage}
+          \pageref{LastPage} f: il; 30 cm.\\
+          
+          \imprimirorientador\\
 
-%     \vfill
-%     \centering
-%     \imprimirlocal\\
-%     \imprimirdata
+          \imprimirtipotrabalho~--~\imprimirinstituicao,
+          \imprimircurso, \imprimirdata.\\
 
-\end{fichacatalografica}}
+          \hspace{0.5cm}
+          \palavraschaveemitens
+          I. \imprimirorientador\ 
+          II. \imprimirinstituicao\ 
+          III. \imprimirtitulo
+
+          \flushright{CDD \imprimircdd}
+          \vspace{12pt}
+        \end{minipage}
+      \end{minipage}
+    }
+
+  \end{fichacatalografica}
+}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
