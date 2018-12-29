@@ -234,45 +234,48 @@
 % % FICHA CATALOGRÁFICA
 % % --------------------------------------------------- %
 
-% \newcommand{\imprimirfichacatalografica}{
-%   \newpage
+\providecommand{\imprimirfichacatalografica}{
+  \begin{fichacatalografica}
     
-%   \centering
-%   \vspace*{\fill}
+   \vspace*{\fill}
 
-%   \fbox{
-%     \begin{minipage}[c][]{15 cm}
-%       \vspace{12pt}
-%       \small{xxxx \imprimirautor}
-%       \centering
-%       \begin{minipage}[c][]{13 cm}
-%         \small
-%         \hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-%         \imprimirlocal, \imprimirdata.\\
+   \fbox{
+     \begin{minipage}[c][]{15 cm}
 
-%         \hspace{0.5cm}  \pageref{LastPage} f: il; 30 cm.\\
+       \vspace{12pt}
+       \small{xxxx \imprimirautor}\\
+
+       \centering\begin{minipage}[c][]{13 cm}
+
+         \setlength{\parindent}{0.5cm}
+         \small
+         
+         \imprimirtitulo  / \imprimirautor. --
+         \imprimirdata.\\
+
+         \pageref{LastPage} f: il; 30 cm.\\
         
-%         \hspace{0.5cm} \imprimirorientador\\
+         \imprimirorientador\\
 
-%         \hspace{0.5cm} \imprimirtipotrabalho~--~\imprimirinstituicao, \imprimircurso, \imprimirdata.\\
+         \imprimirtipotrabalho~--~\imprimirinstituicao,
+         \imprimircurso, \imprimirdata.\\
 
-%         % \hspace{0.5cm}
-%         % 1. \keywordone.
-%         % 2. \keywordtwo.
-%         % 3. \keywordthree.
-%         % 4. \keywordfour.
-%         % 5. \keywordfive.
-%         % 6. \keywordsix.
-%         % I. \profcitation.
-%         % II. \institution.
-%         % III. \@title
+         \hspace{0.5cm}
+         % 1. \keywordone.
+         % 2. \keywordtwo.
+         % 3. \keywordthree.
+         % 4. \keywordfour.
+         % 5. \keywordfive.
+         % 6. \keywordsix.
+         I. \imprimirorientador\ 
+         II. \imprimirinstituicao\ 
+         III. \imprimirtitulo
 
 %         \flushright{xxxx}
 %         \vspace{12pt}
-%       \end{minipage}
-%     \end{minipage}
-%   }
-% }
+       \end{minipage}
+     \end{minipage}
+   }
 
 %     % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
 %     % para a sua impressão.
@@ -296,7 +299,7 @@
 %     \imprimirlocal\\
 %     \imprimirdata
 
-%   \end{folhaderosto}}
+\end{fichacatalografica}}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
