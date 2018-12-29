@@ -190,6 +190,13 @@
   \ifthenelse{\equal{\keywordsix}{}}{}{\keywordsix,\ }
 }
 
+% Cutter e CDD
+\providecommand{\imprimircutter}{X999x}
+\newcommand{\cutter}[1]{\renewcommand{\imprimircutter}{#1}}
+
+\providecommand{\imprimircdd}{999.99}
+\newcommand{\cdd}[1]{\renewcommand{\imprimircdd}{#1}}
+
 %  Assinaturas de orientadores examinadores
 \renewcommand{\orientador}[2]{\renewcommand{\imprimirorientador}{#2: #1}}
 
@@ -305,7 +312,7 @@
      \begin{minipage}[c][]{15 cm}
 
        \vspace{12pt}
-       \small{xxxx \imprimirautor}\\
+       \small{\imprimircutter~\imprimirautor}\\
 
        \centering\begin{minipage}[c][]{13 cm}
 
@@ -328,8 +335,8 @@
          II. \imprimirinstituicao\ 
          III. \imprimirtitulo
 
-%         \flushright{xxxx}
-%         \vspace{12pt}
+        \flushright{CDD \imprimircdd}
+        \vspace{12pt}
        \end{minipage}
      \end{minipage}
    }
