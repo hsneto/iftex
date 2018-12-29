@@ -57,6 +57,8 @@
 \usepackage{listings}
 \usepackage[caption=false,font=normalsize]{subfig}
 
+\usepackage{xparse}                    % Mais de um argumento opcional nos macros
+
 %% Flush captions to left
 \hangcaption
 \captionstyle[\raggedright]{}
@@ -127,6 +129,66 @@
 % Data de aprovação
 \providecommand{\imprimirapprovaldate}{}
 \newcommand{\approvaldate}[3]{\renewcommand{\imprimirapprovaldate}{Aprovado em #1 de #2 de #3}}
+
+% Palavras chave
+\providecommand{\palavrachaveum}{}
+\providecommand{\palavrachavedois}{}
+\providecommand{\palavrachavetres}{}
+\providecommand{\palavrachavequatro}{}
+\providecommand{\palavrachavecinco}{}
+\providecommand{\palavrachaveseis}{}
+\NewDocumentCommand{\palavraschave}{m O{} O{} O{} O{} O{}}{
+  \renewcommand{\palavrachaveum}{#1}
+  \renewcommand{\palavrachavedois}{#2}
+  \renewcommand{\palavrachavetres}{#3}
+  \renewcommand{\palavrachavequatro}{#4}
+  \renewcommand{\palavrachavecinco}{#5}
+  \renewcommand{\palavrachaveseis}{#6}
+}
+
+\newcommand{\palavraschaveemlinha}{
+  \ifthenelse{\equal{\palavrachaveum}{}}{}{\palavrachaveum,\ }
+  \ifthenelse{\equal{\palavrachavedois}{}}{}{\palavrachavedois,\ }
+  \ifthenelse{\equal{\palavrachavetres}{}}{}{\palavrachavetres,\ }
+  \ifthenelse{\equal{\palavrachavequatro}{}}{}{\palavrachavequatro,\ }
+  \ifthenelse{\equal{\palavrachavecinco}{}}{}{\palavrachavecinco,\ }
+  \ifthenelse{\equal{\palavrachaveseis}{}}{}{\palavrachaveseis,\ }
+}
+
+\newcommand{\palavraschaveemitens}{
+  \ifthenelse{\equal{\palavrachaveum}{}}{}{1. \palavrachaveum\ }
+  \ifthenelse{\equal{\palavrachavedois}{}}{}{2. \palavrachavedois\ }
+  \ifthenelse{\equal{\palavrachavetres}{}}{}{3. \palavrachavetres\ }
+  \ifthenelse{\equal{\palavrachavequatro}{}}{}{4. \palavrachavequatro\ }
+  \ifthenelse{\equal{\palavrachavecinco}{}}{}{5. \palavrachavecinco\ }
+  \ifthenelse{\equal{\palavrachaveseis}{}}{}{6. \palavrachaveseis\ }
+}
+
+% Keywords
+
+\providecommand{\keywordone}{}
+\providecommand{\keywordtwo}{}
+\providecommand{\keywordthree}{}
+\providecommand{\keywordfour}{}
+\providecommand{\keywordfive}{}
+\providecommand{\keywordsix}{}
+\NewDocumentCommand{\keywords}{m O{} O{} O{} O{} O{}}{
+  \renewcommand{\keywordone}{#1}
+  \renewcommand{\keywordtwo}{#2}
+  \renewcommand{\keywordthree}{#3}
+  \renewcommand{\keywordfour}{#4}
+  \renewcommand{\keywordfive}{#5}
+  \renewcommand{\keywordsix}{#6}
+}
+
+\newcommand{\inlinekeywords}{
+  \ifthenelse{\equal{\keywordone}{}}{}{\keywordone,\ }
+  \ifthenelse{\equal{\keywordtwo}{}}{}{\keywordtwo,\ }
+  \ifthenelse{\equal{\keywordthree}{}}{}{\keywordthree,\ }
+  \ifthenelse{\equal{\keywordfour}{}}{}{\keywordfour,\ }
+  \ifthenelse{\equal{\keywordfive}{}}{}{\keywordfive,\ }
+  \ifthenelse{\equal{\keywordsix}{}}{}{\keywordsix,\ }
+}
 
 %  Assinaturas de orientadores examinadores
 \renewcommand{\orientador}[2]{\renewcommand{\imprimirorientador}{#2: #1}}
@@ -261,12 +323,7 @@
          \imprimircurso, \imprimirdata.\\
 
          \hspace{0.5cm}
-         % 1. \keywordone.
-         % 2. \keywordtwo.
-         % 3. \keywordthree.
-         % 4. \keywordfour.
-         % 5. \keywordfive.
-         % 6. \keywordsix.
+         \palavraschaveemitens
          I. \imprimirorientador\ 
          II. \imprimirinstituicao\ 
          III. \imprimirtitulo
