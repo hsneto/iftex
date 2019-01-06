@@ -198,13 +198,16 @@
 \newcommand{\cdd}[1]{\renewcommand{\imprimircdd}{#1}}
 
 % Assinaturas de orientadores examinadores
-\RenewDocumentCommand{\orientador}{O{Orientador} O{} m O{}}{
+\RenewDocumentCommand{\orientador}{O{Orientador} O{} m O{} m}{
   \ifthenelse{\equal{#1}{}}{
     \renewcommand{\imprimirorientador}{#2 #3 #4}
     \newcommand{\imprimirorientadorsemtitulo}{#3 #4}
+    \newcommand{\assinaturaorientador}{\textbf{#2 #3 #4}\\ #5 \\ \vspace*{\fill}}
   }{
     \renewcommand{\imprimirorientador}{#1: #2 #3 #4}
     \newcommand{\imprimirorientadorsemtitulo}{#1: #3 #4}
+    \newcommand{\assinaturaorientador}{
+      \textbf{#2 #3 #4}\\ #5 \\ #1\\ \vspace*{\fill}}
   }
   
   \ifthenelse{\equal{#4}{}}{
@@ -214,31 +217,62 @@
   }
 }
 
-\RenewDocumentCommand{\coorientador}{O{Coorientador} O{} m O{}}{
+\RenewDocumentCommand{\coorientador}{O{Coorientador} O{} m O{} m}{
   \ifthenelse{\equal{#1}{}}{
     \renewcommand{\imprimircoorientador}{#2 #3 #4}
+    \newcommand{\assinaturacoorientador}{
+      \textbf{#2 #3 #4}\\ #5 \\ \vspace*{\fill}}
   }{
     \renewcommand{\imprimircoorientador}{#1: #2 #3 #4}
+    \newcommand{\assinaturacoorientador}{
+      \textbf{#2 #3 #4}\\ #5 \\ #1\\ \vspace*{\fill}}
   }
 }
 
-\providecommand{\assinaturaorientador}{}
-\newcommand{\orientadori}[3]{\renewcommand{\assinaturaorientador}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
-
-\providecommand{\assinaturacoorientador}{}
-\newcommand{\orientadorii}[3]{\renewcommand{\assinaturacoorientador}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
-
 \providecommand{\assinaturaexaminadori}{}
-\newcommand{\examinadori}[3]{\renewcommand{\assinaturaexaminadori}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\examinadori}[3]{\renewcommand{\assinaturaexaminadori}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
 \providecommand{\assinaturaexaminadorii}{}
-\newcommand{\examinadorii}[3]{\renewcommand{\assinaturaexaminadorii}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\examinadorii}[3]{\renewcommand{\assinaturaexaminadorii}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
 \providecommand{\assinaturaexaminadoriii}{}
-\newcommand{\examinadoriii}[3]{\renewcommand{\assinaturaexaminadoriii}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\examinadoriii}[3]{\renewcommand{\assinaturaexaminadoriii}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
 % Folha de Aprovação
-\providecommand{\imprimiraprovacao}{}
+\providecommand{\imprimiraprovacao}{
+    \begin{folhadeaprovacao}
+      \centering
+      
+      \textbf{\MakeUppercase\imprimirautor}
+      \vspace*{\fill}
+
+      \linespread{1.6}
+      \textbf{\MakeUppercase\imprimirtitulo}
+      \vspace*{\fill}
+
+      \raggedleft
+      \begin{minipage}{8cm}
+        \scriptsize
+        \SingleSpacing
+        \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+      \end{minipage}
+      \vspace*{\fill}
+
+      \centering
+       
+      \imprimirapprovaldate
+      \vspace*{\fill}
+      
+      \textbf{\MakeUppercase{comissão examinadora}}
+      \vspace*{\fill}
+      
+      \assinaturaorientador
+      \assinaturacoorientador
+      \assinaturaexaminadori
+      \assinaturaexaminadorii
+      \assinaturaexaminadoriii
+  \end{folhadeaprovacao}
+}
 
 % Lista de Figuras
 \renewcommand{\listfigurename}{Lista de figuras}
