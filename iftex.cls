@@ -199,17 +199,27 @@
 
 % Assinaturas de orientadores examinadores
 \RenewDocumentCommand{\orientador}{O{Orientador} O{} m O{}}{
-  \renewcommand{\imprimirorientador}{
-    \ifthenelse{\equal{#1}{}}{#2 #3 #4}{#1: #2 #3 #4}}
-  \newcommand{\imprimirorientadorsemtitulo}{
-    \ifthenelse{\equal{#1}{}}{#3 #4}{#1: #3 #4}}
-  \newcommand{\imprimirorientadorcitacao}{
-    \ifthenelse{\equal{#4}{}}{#3}{#4, #3}}
+  \ifthenelse{\equal{#1}{}}{
+    \renewcommand{\imprimirorientador}{#2 #3 #4}
+    \newcommand{\imprimirorientadorsemtitulo}{#3 #4}
+  }{
+    \renewcommand{\imprimirorientador}{#1: #2 #3 #4}
+    \newcommand{\imprimirorientadorsemtitulo}{#1: #3 #4}
+  }
+  
+  \ifthenelse{\equal{#4}{}}{
+    \newcommand{\imprimirorientadorcitacao}{#3}
+  }{
+    \newcommand{\imprimirorientadorcitacao}{#4, #3}
+  }
 }
 
 \RenewDocumentCommand{\coorientador}{O{Coorientador} O{} m O{}}{
-  \renewcommand{\imprimircoorientador}{
-    \ifthenelse{\equal{#1}{}}{#2 #3 #4}{#1: #2 #3 #4}}
+  \ifthenelse{\equal{#1}{}}{
+    \renewcommand{\imprimircoorientador}{#2 #3 #4}
+  }{
+    \renewcommand{\imprimircoorientador}{#1: #2 #3 #4}
+  }
 }
 
 \providecommand{\assinaturaorientador}{}
@@ -278,19 +288,19 @@
   % \begin{folhaderosto}
   \centering
 
-  \vspace*{2.0cm}
+  \vspace*{4.0cm}
 
-  \MakeUppercase\imprimirautor
-  \vspace*{3.5cm}
+  \textbf{\MakeUppercase\imprimirautor}
+  \vspace*{2.5cm}
 
   \textbf{\MakeUppercase\imprimirtitulo}
-  \vspace*{3.0cm}
+  \vspace*{\fill}
 
   % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
   % para a sua impressão.
   \raggedleft
   \begin{minipage}{8cm}
-    \footnotesize
+    \scriptsize
     \SingleSpacing
     \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
     
