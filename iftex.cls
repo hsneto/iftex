@@ -197,10 +197,15 @@
 \providecommand{\imprimircdd}{999.99}
 \newcommand{\cdd}[1]{\renewcommand{\imprimircdd}{#1}}
 
-%  Assinaturas de orientadores examinadores
-\renewcommand{\orientador}[2]{\renewcommand{\imprimirorientador}{#2: #1}}
-
-\renewcommand{\coorientador}[2]{\renewcommand{\imprimircoorientador}{#2: #1}}
+% Assinaturas de orientadores examinadores
+\RenewDocumentCommand{\orientador}{O{Orientador} O{} m O{}}{
+  \renewcommand{\imprimirorientador}{
+    \ifthenelse{\equal{#1}{}}{#2 #3 #4}{#1: #2 #3 #4}}
+  \newcommand{\imprimirorientadorsemtitulo}{
+    \ifthenelse{\equal{#1}{}}{#3 #4}{#1: #3 #4}}
+  \newcommand{\imprimirorientadorcitacao}{
+    \ifthenelse{\equal{#4}{}}{#3}{#4, #3}}
+}
 
 \providecommand{\assinaturaorientador}{}
 \newcommand{\orientadori}[3]{\renewcommand{\assinaturaorientador}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
@@ -326,14 +331,14 @@
 
           \pageref{LastPage} f: il; 30 cm.\\
           
-          \imprimirorientador\\
+          \imprimirorientadorsemtitulo\\
 
           \imprimirtipotrabalho~--~\imprimirinstituicao,
           \imprimircurso, \imprimirdata.\\
 
           \hspace{0.5cm}
           \palavraschaveemitens
-          I. \imprimirorientador\ 
+          I. \imprimirorientadorcitacao\ 
           II. \imprimirinstituicao\ 
           III. \imprimirtitulo
 
