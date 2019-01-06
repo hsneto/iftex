@@ -207,6 +207,11 @@
     \ifthenelse{\equal{#4}{}}{#3}{#4, #3}}
 }
 
+\RenewDocumentCommand{\coorientador}{O{Coorientador} O{} m O{}}{
+  \renewcommand{\imprimircoorientador}{
+    \ifthenelse{\equal{#1}{}}{#2 #3 #4}{#1: #2 #3 #4}}
+}
+
 \providecommand{\assinaturaorientador}{}
 \newcommand{\orientadori}[3]{\renewcommand{\assinaturaorientador}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
 
@@ -271,36 +276,34 @@
 
 \renewcommand{\imprimirfolhaderosto}{
   % \begin{folhaderosto}
+  \centering
+
+  \vspace*{2.0cm}
+
+  \MakeUppercase\imprimirautor
+  \vspace*{3.5cm}
+
+  \textbf{\MakeUppercase\imprimirtitulo}
+  \vspace*{3.0cm}
+
+  % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
+  % para a sua impressão.
+  \raggedleft
+  \begin{minipage}{8cm}
+    \footnotesize
+    \SingleSpacing
+    \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
     
-    \centering  	
+    \imprimirorientador\\
 
-    \MakeUppercase\imprimirautor
-    \vspace*{3.5cm}
+    % Se existir coorientador imprima seu nome.
+    \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
+  \end{minipage}
 
-    \textbf{\MakeUppercase\imprimirtitulo}
-    \vspace*{3.0cm}
-
-    % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
-    % para a sua impressão.
-    \abntex@ifnotempty{\imprimirpreambulo}{
-      \raggedleft
-      \begin{minipage}{8cm}
-        \footnotesize 
-        \SingleSpacing
-        \imprimirpreambulo\\
-
-        \normalsize
-        \imprimirorientador\\
-
-        % Se existir coorientador, imprima seu nome.
-        \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
-      \end{minipage}
-    }
-
-    \vfill
-    \centering
-    \imprimirlocal\\
-    \imprimirdata
+  \vfill
+  \centering
+  \imprimirlocal\\
+  \imprimirdata
 
   % \end{folhaderosto}
 }
