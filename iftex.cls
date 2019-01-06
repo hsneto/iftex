@@ -315,6 +315,8 @@
   \imprimirlocal\\
   \imprimirdata
 
+  \newpage
+
   % \end{folhaderosto}
 }
 
