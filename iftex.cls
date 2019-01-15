@@ -354,9 +354,9 @@
   % \end{folhaderosto}
 }
 
-% % --------------------------------------------------- %
-% % FICHA CATALOGRÁFICA
-% % --------------------------------------------------- %
+% --------------------------------------------------- %
+% FICHA CATALOGRÁFICA
+% --------------------------------------------------- %
 
 \providecommand{\imprimirfichacatalografica}{
   
@@ -398,6 +398,22 @@
     }
 
   \end{fichacatalografica}
+}
+
+% --------------------------------------------------- %
+% DEDICATÓRIA
+% --------------------------------------------------- %
+\newcommand{\imprimirdedicatoria}[1]{
+  \begin{dedicatoria}
+    \vspace*{\fill}
+    \noindent
+
+    \raggedleft
+    \begin{minipage}{12cm}
+      #1
+    \end{minipage}
+    \vspace*{2.0cm}
+  \end{dedicatoria}
 }
 
 % --------------------------------------------------- %
