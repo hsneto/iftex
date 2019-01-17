@@ -320,34 +320,39 @@
 
 \renewcommand{\imprimirfolhaderosto}{
   % \begin{folhaderosto}
-  \centering
 
-  \vspace*{4.0cm}
+  \begin{center}
+    \vspace*{4.0cm}
 
-  \textbf{\MakeUppercase\imprimirautor}
-  \vspace*{2.5cm}
+    \textbf{\MakeUppercase\imprimirautor}
+    \vspace*{2.5cm}
 
-  \textbf{\MakeUppercase\imprimirtitulo}
-  \vspace*{\fill}
+    \textbf{\MakeUppercase\imprimirtitulo}
+    \vspace*{\fill}
+  \end{center}
 
   % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
   % para a sua impressão.
-  \raggedleft
-  \begin{minipage}{8cm}
-    \scriptsize
-    \SingleSpacing
-    \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
-    
-    \imprimirorientador\\
 
-    % Se existir coorientador imprima seu nome.
-    \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
-  \end{minipage}
+  \begin{flushright}
+    \begin{minipage}{8cm}
+      \scriptsize
+      \SingleSpacing
+      \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+    
+      \imprimirorientador\\
+
+      % Se existir coorientador imprima seu nome.
+      \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
+    \end{minipage}
+  \end{flushright}
 
   \vfill
-  \centering
-  \imprimirlocal\\
-  \imprimirdata
+  
+  \begin{center}
+    \imprimirlocal\\
+    \imprimirdata
+  \end{center}
 
   \newpage
 
