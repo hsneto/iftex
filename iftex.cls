@@ -403,17 +403,18 @@
 % --------------------------------------------------- %
 % DEDICATÓRIA
 % --------------------------------------------------- %
-\newcommand{\imprimirdedicatoria}[1]{
-  \begin{dedicatoria}
-    \vspace*{\fill}
-    \noindent
-
-    \raggedleft
-    \begin{minipage}{12cm}
-      #1
-    \end{minipage}
-    \vspace*{2.0cm}
-  \end{dedicatoria}
+\providecommand{\imprimirdedicatoria}{}
+\newcommand{\editardedicatoria}[1]{
+  \renewcommand{\imprimirdedicatoria}{
+    \begin{dedicatoria}
+      \vspace*{\fill}
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+        #1
+      \end{minipage}
+      \vspace*{2.0cm}
+    \end{dedicatoria}
+  }
 }
 
 % --------------------------------------------------- %
