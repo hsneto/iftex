@@ -418,6 +418,18 @@
 }
 
 % --------------------------------------------------- %
+% AGRADECIMENTOS
+% --------------------------------------------------- %
+\providecommand{\imprimiragradecimentos}{}
+\newcommand{\editaragradecimentos}[1]{
+  \renewcommand{\imprimiragradecimentos}{  
+    \begin{agradecimentos}
+      #1
+    \end{agradecimentos}
+  }
+}
+
+% --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
 % --------------------------------------------------- %
 
