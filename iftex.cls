@@ -240,37 +240,37 @@
 
 % Folha de Aprovação
 \providecommand{\imprimiraprovacao}{
-    \begin{folhadeaprovacao}
-      \centering
-      
-      \textbf{\MakeUppercase\imprimirautor}
-      \vspace*{\fill}
+  \begin{folhadeaprovacao}
+    \centering
+    
+    \textbf{\MakeUppercase\imprimirautor}
+    \vspace*{\fill}
 
-      \linespread{1.6}
-      \textbf{\MakeUppercase\imprimirtitulo}
-      \vspace*{\fill}
+    \linespread{1.6}
+    \textbf{\MakeUppercase\imprimirtitulo}
+    \vspace*{\fill}
 
-      \raggedleft
-      \begin{minipage}{8cm}
-        \scriptsize
-        \SingleSpacing
-        \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
-      \end{minipage}
-      \vspace*{\fill}
+    \raggedleft
+    \begin{minipage}{8cm}
+      \scriptsize
+      \SingleSpacing
+      \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+    \end{minipage}
+    \vspace*{\fill}
 
-      \centering
-       
-      \imprimirapprovaldate
-      \vspace*{\fill}
-      
-      \textbf{\MakeUppercase{comissão examinadora}}
-      \vspace*{\fill}
-      
-      \assinaturaorientador
-      \assinaturacoorientador
-      \assinaturaexaminadori
-      \assinaturaexaminadorii
-      \assinaturaexaminadoriii
+    \centering
+    
+    \imprimirapprovaldate
+    \vspace*{\fill}
+    
+    \textbf{\MakeUppercase{comissão examinadora}}
+    \vspace*{\fill}
+    
+    \assinaturaorientador
+    \assinaturacoorientador
+    \assinaturaexaminadori
+    \assinaturaexaminadorii
+    \assinaturaexaminadoriii
   \end{folhadeaprovacao}
 }
 
@@ -448,6 +448,59 @@
     \end{epigrafe}
   }
 }
+% --------------------------------------------------- %
+% LISTA DE FIGURAS
+% --------------------------------------------------- %
+\newcommand{\imprimirlistafiguras}{
+  \pdfbookmark[0]{\listfigurename}{lof}
+  \listoffigures*
+  \cleardoublepage
+}
+
+% --------------------------------------------------- %
+% LISTA DE TABELAS
+% --------------------------------------------------- %
+\newcommand{\imprimirlistatabelas}{
+  \pdfbookmark[0]{\listtablename}{lot}
+  \listoftables*
+  \cleardoublepage
+}
+
+% --------------------------------------------------- %  
+% LISTA DE QUADROS
+% --------------------------------------------------- %
+\newcommand{\imprimirlistaquadros}{
+  \pdfbookmark[0]{\listofquadrosname}{loq}
+  \listofquadros*
+  \cleardoublepage
+}
+
+% --------------------------------------------------- %
+% LISTA DE ABREVIATUAS E SIGLAS
+% --------------------------------------------------- %
+\newcommand{\imprimirlistasiglas}{
+  \begin{siglas}
+  \item[Ifes] Instituto Federal do Espírito Santo
+  \end{siglas}
+}
+
+% --------------------------------------------------- %
+% LISTA DE SÍMBOLOS
+% --------------------------------------------------- %
+\newcommand{\imprimirlistasimbolos}{
+  \begin{simbolos}
+  \item[$\lambda$] Letra grega labda
+  \end{simbolos}
+}
+
+% --------------------------------------------------- %
+% SUMÁRIO
+% --------------------------------------------------- %
+\newcommand{\imprimirsumario}{
+  \pdfbookmark[0]{\contentsname}{toc}
+  \tableofcontents*
+  \cleardoublepage
+}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
@@ -474,7 +527,7 @@
 % CONFIGURAÇÃO DO listings %
 % --------------------------------------------------- %
 
-\definecolor{backcolour}{RGB}{245,245,245}
+\definecolor{backcolour}{RGB}{255,255,255}
 \definecolor{commentcolour}{RGB}{0,128,0}
 \definecolor{keywordcolour}{RGB}{249,38,114}
 \definecolor{stringcolour}{RGB}{255,102,0}
@@ -497,7 +550,8 @@
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2
+    tabsize=4,
+    linewidth=79em
 }
  
 \lstset{style=mystyle}
