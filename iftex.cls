@@ -435,6 +435,21 @@
 }
 
 % --------------------------------------------------- %
+% EPÍGRAFE
+% --------------------------------------------------- %
+\providecommand{\imprimirepigrafe}{}
+\newcommand{\editarepigrafe}[1]{
+  \renewcommand{\imprimirepigrafe}{
+    \begin{epigrafe}
+      \vspace*{\fill}
+      \begin{center}
+        #1
+      \end{center}
+    \end{epigrafe}
+  }
+}
+
+% --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
 % --------------------------------------------------- %
 
