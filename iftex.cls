@@ -147,12 +147,12 @@
 }
 
 \newcommand{\palavraschaveemlinha}{
-  \ifthenelse{\equal{\palavrachaveum}{}}{}{\palavrachaveum,\ }
-  \ifthenelse{\equal{\palavrachavedois}{}}{}{\palavrachavedois,\ }
-  \ifthenelse{\equal{\palavrachavetres}{}}{}{\palavrachavetres,\ }
-  \ifthenelse{\equal{\palavrachavequatro}{}}{}{\palavrachavequatro,\ }
-  \ifthenelse{\equal{\palavrachavecinco}{}}{}{\palavrachavecinco,\ }
-  \ifthenelse{\equal{\palavrachaveseis}{}}{}{\palavrachaveseis,\ }
+  \ifthenelse{\equal{\palavrachaveum}{}}{}{\palavrachaveum.\ }
+  \ifthenelse{\equal{\palavrachavedois}{}}{}{\palavrachavedois.\ }
+  \ifthenelse{\equal{\palavrachavetres}{}}{}{\palavrachavetres.\ }
+  \ifthenelse{\equal{\palavrachavequatro}{}}{}{\palavrachavequatro.\ }
+  \ifthenelse{\equal{\palavrachavecinco}{}}{}{\palavrachavecinco.\ }
+  \ifthenelse{\equal{\palavrachaveseis}{}}{}{\palavrachaveseis.\ }
 }
 
 \newcommand{\palavraschaveemitens}{
@@ -182,12 +182,12 @@
 }
 
 \newcommand{\inlinekeywords}{
-  \ifthenelse{\equal{\keywordone}{}}{}{\keywordone,\ }
-  \ifthenelse{\equal{\keywordtwo}{}}{}{\keywordtwo,\ }
-  \ifthenelse{\equal{\keywordthree}{}}{}{\keywordthree,\ }
-  \ifthenelse{\equal{\keywordfour}{}}{}{\keywordfour,\ }
-  \ifthenelse{\equal{\keywordfive}{}}{}{\keywordfive,\ }
-  \ifthenelse{\equal{\keywordsix}{}}{}{\keywordsix,\ }
+  \ifthenelse{\equal{\keywordone}{}}{}{\keywordone.\ }
+  \ifthenelse{\equal{\keywordtwo}{}}{}{\keywordtwo.\ }
+  \ifthenelse{\equal{\keywordthree}{}}{}{\keywordthree.\ }
+  \ifthenelse{\equal{\keywordfour}{}}{}{\keywordfour.\ }
+  \ifthenelse{\equal{\keywordfive}{}}{}{\keywordfive.\ }
+  \ifthenelse{\equal{\keywordsix}{}}{}{\keywordsix.\ }
 }
 
 % Cutter e CDD
