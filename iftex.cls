@@ -324,7 +324,7 @@
   \begin{center}
     \vspace*{4.0cm}
 
-    \textbf{\MakeUppercase\imprimirautor}
+    \MakeUppercase\imprimirautor
     \vspace*{2.5cm}
 
     \textbf{\MakeUppercase\imprimirtitulo}
