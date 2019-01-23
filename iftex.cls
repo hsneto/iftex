@@ -478,21 +478,19 @@
 % --------------------------------------------------- %
 % LISTA DE ABREVIATUAS E SIGLAS
 % --------------------------------------------------- %
-\newcommand{\imprimirlistasiglas}{
-  \begin{siglas}
-  \item[Ifes] Instituto Federal do Espírito Santo
-  \end{siglas}
+\providecommand{\imprimirlistasiglas}{}
+\newcommand{\editarlistasiglas}[1]{
+  \renewcommand{\imprimirlistasiglas}{#1}
 }
 
 % --------------------------------------------------- %
 % LISTA DE SÍMBOLOS
 % --------------------------------------------------- %
-\newcommand{\imprimirlistasimbolos}{
-  \begin{simbolos}
-  \item[$\lambda$] Letra grega labda
-  \end{simbolos}
+\providecommand{\imprimirlistasimbolos}{}
+\newcommand{\editarlistasimbolos}[1]{
+  \renewcommand{\imprimirlistasimbolos}{#1}
 }
-
+  
 % --------------------------------------------------- %
 % SUMÁRIO
 % --------------------------------------------------- %

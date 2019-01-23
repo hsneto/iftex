@@ -1,42 +1,6 @@
-\documentclass[
-  12pt,				    % tamanho da fonte
-  openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-  oneside,			  % para impressão em recto e verso. Oposto a oneside
-  a4paper,			  % tamanho do papel. 
-  chapter=TITLE,  % títulos de capítulos convertidos em letras maiúsculas
-  section=TITLE,  % títulos de seções convertidos em letras maiúsculas
-  english,			  % idioma adicional para hifenização
-  french,				  % idioma adicional para hifenização
-  spanish,			  % idioma adicional para hifenização
-  brazil				  % o último idioma é o principal do documento
-]{iftex}
+\input{configuracoes}
 
-%% Arial: 
-% Para usar times-new-roman, comente as três linhas abaixo
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-\renewcommand{\ABNTEXchapterfont}{\bfseries}
-
-\usepackage{easyReview} % Comandos para revisar o texto
-
-%% Macros de dados do documento
-\autor{Autor do projeto}
-\titulo{Título do projeto}
-\instituicao{Instituto federal do espírito santo}
-\curso{Curso de Engenharia Elétrica}
-\local{Vitória}
-\data{2018}
-
-\tipotrabalho{Trabalho de Graduação}
-\preambulo{Trabalho de Conclusão de Curso apresentado à Coordenadoria do Curso de Engenharia Elétrica do
-Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo, como requisito parcial para a obtenção do título de Engenheiro Eletricista.}
-\orientador[Orientador][Prof. Dr.]{Beltrano}[de Tal]{Instituto Federal do Espírito Santo}
-\coorientador[Coorientadora][Profa. Dra.]{Beltrana}[de Tal]{Instituto Federal do Espírito Santo}
-
-\palavraschave{Palavra Chave 1}[Palavra Chave 2][Palavra Chave 3][Palavra Chave 4][Palavra Chave 5][Palavra Chave 6]
-
-\cutter{X999y}
-\cdd{000.00}
+\input{dados}
 
 \begin{document}
 
@@ -52,35 +16,22 @@ Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo, como 
 
   \pretextual
 
-  % CAPA E CONTRA-CAPA
+  % CAPA E FOLHA DE ROSTO
   \imprimircapa
   \imprimirfolhaderosto
+
+  % FICHA CATALOGRAFICA
+  % OBS.: Após receber a ficha da biblioteca, comente a macro abaixo:
   \imprimirfichacatalografica
-   
-  % FICHA CATALOGRAFICA ==> Adicione com anexo
-	% \begin{fichacatalografica}
-  % \includepdf{fig_ficha_catalografica.pdf}
-	% \end{fichacatalografica}
+  % E descomente as demais:
+  % \begin{fichacatalografica}
+  %   \includepdf{fig_ficha_catalografica.pdf}
+  % \end{fichacatalografica}
 
-  % FOLHA DE APROVAÇÃO
-  % \orientadori{Prof. Dr. Beltrano de Tal}{Instituto Federal do Espírito Santo}{Orientador}
-  % \orientadorii{Profa. Dra. Beltrana de Tal}{Instituto Federal do Espírito Santo}{Coorientadora}
-  \examinadori{Profa. Dra. Fulana de Tal}{Instituto Federal do Espírito Santo}{Examinadora}
-  \examinadorii{Prof. Dr. Cicrano de Tal}{Instituto Federal do Espírito Santo}{Examinador}
-  \approvaldate{01}{Dezembro}{2018}
-
+  % APROVAÇÃO, DEDICATÓRIA, AGRADECIMENTOS, EPÍGRAFE
   \imprimiraprovacao
-
-  % DEDICATÓRIA
-  \editardedicatoria{A dedicatória é um elemento opcional. Contém o oferecimento do trabalho adeterminada pessoa ou a pessoas (ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2011b).}
   \imprimirdedicatoria
-    
-  % AGRADECIMENTOS
-  \editaragradecimentos{A um elemento opcional. Localiza-se após a folha de aprovação e deve ser dirigido àqueles que realmente contribuíram, de maneira relevante,para a elaboração do trabalho. Deve-se utilizar uma linguagem simples (ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2011b).}
   \imprimiragradecimentos
-  
-  % EPIGRAFE
-  \editarepigrafe{\textbf{Epigrafe:} É um elemento opcional. É uma citação relacionada ao assunto do trabalho desenvolvido, seguida da indicação de autoria (ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2011b).   Deve-se seguir as regras do uso da citação NBR 10.520/2002.}
   \imprimirepigrafe
   
   % RESUMO - PT/EN
