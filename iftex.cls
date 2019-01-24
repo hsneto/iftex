@@ -238,58 +238,6 @@
 \providecommand{\assinaturaexaminadoriii}{}
 \newcommand{\examinadoriii}[3]{\renewcommand{\assinaturaexaminadoriii}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
-% Folha de Aprovação
-\providecommand{\imprimiraprovacao}{
-  \begin{folhadeaprovacao}
-    
-    \centering
-    
-    \textbf{\MakeUppercase\imprimirautor}
-    \vspace*{\fill}
-
-    \linespread{1.6}
-    \textbf{\MakeUppercase\imprimirtitulo}
-    \vspace*{\fill}
-
-    \raggedleft
-    \begin{minipage}{8cm}
-      \scriptsize
-      \SingleSpacing
-      \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
-    \end{minipage}
-    \vspace*{\fill}
-
-    \centering
-    
-    \imprimirapprovaldate
-    \vspace*{\fill}
-    
-    \textbf{\MakeUppercase{comissão examinadora}}
-    \vspace*{\fill}
-    
-    \assinaturaorientador
-    \assinaturacoorientador
-    \assinaturaexaminadori
-    \assinaturaexaminadorii
-    \assinaturaexaminadoriii
-  \end{folhadeaprovacao}
-}
-
-% Lista de Figuras
-\renewcommand{\listfigurename}{Lista de figuras}
-
-% Lista de Quadros
-\newcommand{\quadroname}{Quadro}
-\newcommand{\listofquadrosname}{Lista de Quadros}
-
-\newfloat[chapter]{quadro}{loq}{\quadroname}
-\newlistof{listofquadros}{loq}{\listofquadrosname}
-\newlistentry{quadro}{loq}{0}
-
-\counterwithout{quadro}{chapter}
-\renewcommand{\cftquadroname}{\quadroname\space} 
-\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
-
 % Referencias
 \renewcommand{\bibname}{Referências}
 
@@ -398,6 +346,45 @@
 }
 
 % --------------------------------------------------- %
+% FOLHA DE APROVAÇÃO                                  %
+% --------------------------------------------------- %
+\providecommand{\imprimiraprovacao}{
+  \begin{folhadeaprovacao}
+    
+    \centering
+    
+    \textbf{\MakeUppercase\imprimirautor}
+    \vspace*{\fill}
+
+    \linespread{1.6}
+    \textbf{\MakeUppercase\imprimirtitulo}
+    \vspace*{\fill}
+
+    \raggedleft
+    \begin{minipage}{8cm}
+      \scriptsize
+      \SingleSpacing
+      \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+    \end{minipage}
+    \vspace*{\fill}
+
+    \centering
+    
+    \imprimirapprovaldate
+    \vspace*{\fill}
+    
+    \textbf{\MakeUppercase{comissão examinadora}}
+    \vspace*{\fill}
+    
+    \assinaturaorientador
+    \assinaturacoorientador
+    \assinaturaexaminadori
+    \assinaturaexaminadorii
+    \assinaturaexaminadoriii
+  \end{folhadeaprovacao}
+}
+
+% --------------------------------------------------- %
 % DEDICATÓRIA
 % --------------------------------------------------- %
 \providecommand{\imprimirdedicatoria}{}
@@ -440,9 +427,11 @@
     \end{epigrafe}
   }
 }
+
 % --------------------------------------------------- %
 % LISTA DE FIGURAS
 % --------------------------------------------------- %
+\renewcommand{\listfigurename}{Lista de figuras}
 \newcommand{\imprimirlistafiguras}{
   \pdfbookmark[0]{\listfigurename}{lof}
   \listoffigures*
@@ -461,6 +450,16 @@
 % --------------------------------------------------- %  
 % LISTA DE QUADROS
 % --------------------------------------------------- %
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de Quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
 \newcommand{\imprimirlistaquadros}{
   \pdfbookmark[0]{\listofquadrosname}{loq}
   \listofquadros*
