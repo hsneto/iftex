@@ -245,19 +245,22 @@
 % CAPA                                                %
 % --------------------------------------------------- %
 \renewcommand{\imprimircapa}{
-  \centering  	
-  \MakeUppercase\imprimirinstituicao\\
-  \MakeUppercase\imprimircurso
-  \vspace*{3.0cm}
 
-  \textbf{\MakeUppercase\imprimirautor}
-  \vspace*{3.5cm}
+  \begin{center}
+    \MakeUppercase\imprimirinstituicao\\
+    \MakeUppercase\imprimircurso
+    \vspace*{3.0cm}
 
-  \textbf{\MakeUppercase\imprimirtitulo}
-  \vfill
+    \textbf{\MakeUppercase\imprimirautor}
+    \vspace*{3.5cm}
+
+    \textbf{\MakeUppercase\imprimirtitulo}
+    \vfill
   
-  \imprimirlocal\\
-  \imprimirdata
+    \imprimirlocal\\
+    \imprimirdata
+  \end{center}
+
 
   \cleardoublepage
 }
@@ -351,36 +354,39 @@
 \providecommand{\imprimiraprovacao}{
   \begin{folhadeaprovacao}
     
-    \centering
-    
-    \textbf{\MakeUppercase\imprimirautor}
-    \vspace*{\fill}
+    \begin{center}
+      \textbf{\MakeUppercase\imprimirautor}
+      \vspace*{\fill}
 
-    \linespread{1.6}
-    \textbf{\MakeUppercase\imprimirtitulo}
-    \vspace*{\fill}
+      \linespread{1.6}
+      \textbf{\MakeUppercase\imprimirtitulo}
+      \vspace*{\fill}
+    \end{center}
 
-    \raggedleft
-    \begin{minipage}{8cm}
-      \scriptsize
-      \SingleSpacing
-      \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
-    \end{minipage}
-    \vspace*{\fill}
+    \begin{flushright}
+      \begin{minipage}{8cm}
+        \scriptsize
+        \SingleSpacing
+        \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+      \end{minipage}
+      \vspace*{\fill}
+    \end{flushright}
 
-    \centering
     
-    \imprimirapprovaldate
-    \vspace*{\fill}
+    \begin{center}
+      \imprimirapprovaldate
+      \vspace*{\fill}
     
-    \textbf{\MakeUppercase{comissão examinadora}}
-    \vspace*{\fill}
+      \textbf{\MakeUppercase{comissão examinadora}}
+      \vspace*{\fill}
     
-    \assinaturaorientador
-    \assinaturacoorientador
-    \assinaturaexaminadori
-    \assinaturaexaminadorii
-    \assinaturaexaminadoriii
+      \assinaturaorientador
+      \assinaturacoorientador
+      \assinaturaexaminadori
+      \assinaturaexaminadorii
+      \assinaturaexaminadoriii
+    \end{center}
+
   \end{folhadeaprovacao}
 }
 
@@ -580,7 +586,6 @@
 \addtocontents{lof}{\vspace{15pt}}
 \addtocontents{lot}{\vspace{15pt}}
 \addtocontents{loq}{\vspace{15pt}}
-
 
 % --------------------------------------------------- %
 % NUMERAÇÂO DAS PÁGINAS %
