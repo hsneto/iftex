@@ -11,12 +11,11 @@
   \graphicspath{{figuras/}}
 
   % --------------------------------------------------- %
-  % ELEMENTOS PRE-TEXTUAIS %
+  % CAPAS                                               %
   % --------------------------------------------------- %
 
-  \pretextual
-
   % CAPA E FOLHA DE ROSTO
+  \capas
   \imprimircapa
   \imprimirfolhaderosto
 
@@ -28,7 +27,12 @@
   %   \includepdf{fig_ficha_catalografica.pdf}
   % \end{fichacatalografica}
 
+  % --------------------------------------------------- %
+  % ELEMENTOS PRÉ-TEXTUAIS                              %
+  % --------------------------------------------------- %
+  
   % APROVAÇÃO, DEDICATÓRIA, AGRADECIMENTOS, EPÍGRAFE
+  \pretextual
   \imprimiraprovacao
   \imprimirdedicatoria
   \imprimiragradecimentos
@@ -46,13 +50,9 @@
   \imprimirsumario
 
   % --------------------------------------------------- %
-  % ELEMENTOS TEXTUAIS %
+  % ELEMENTOS TEXTUAIS                                  %
   % --------------------------------------------------- %
-    
   \textual
-  \pagestyle{ifes}
-  \aliaspagestyle{chapter}{ifes}
-  
   \input{capitulos/introducao}
   \input{capitulos/ref_teorico}
   \input{capitulos/conclusao}
@@ -63,7 +63,6 @@
   % --------------------------------------------------- %
   % ELEMENTOS POS-TEXTUAIS %
   % --------------------------------------------------- %
-
   \postextual
   
   % Referencias Bibliográficas

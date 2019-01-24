@@ -241,6 +241,7 @@
 % Folha de Aprovação
 \providecommand{\imprimiraprovacao}{
   \begin{folhadeaprovacao}
+    
     \centering
     
     \textbf{\MakeUppercase\imprimirautor}
@@ -293,34 +294,30 @@
 \renewcommand{\bibname}{Referências}
 
 % --------------------------------------------------- %
-% CAPA %
+% CAPA                                                %
 % --------------------------------------------------- %
 \renewcommand{\imprimircapa}{
-  \begin{capa}
-    
-    \centering  	
-    \MakeUppercase\imprimirinstituicao\\
-    \MakeUppercase\imprimircurso
-    \vspace*{3.0cm}
+  \centering  	
+  \MakeUppercase\imprimirinstituicao\\
+  \MakeUppercase\imprimircurso
+  \vspace*{3.0cm}
 
-    \textbf{\MakeUppercase\imprimirautor}
-    \vspace*{3.5cm}
+  \textbf{\MakeUppercase\imprimirautor}
+  \vspace*{3.5cm}
 
-    \textbf{\MakeUppercase\imprimirtitulo}
-    \vfill
-	    
-    \imprimirlocal\\
-    \imprimirdata
+  \textbf{\MakeUppercase\imprimirtitulo}
+  \vfill
+  
+  \imprimirlocal\\
+  \imprimirdata
 
-\end{capa}}
+  \cleardoublepage
+}
 
 % --------------------------------------------------- %
 % FOLHA DE ROSTO %
 % --------------------------------------------------- %
-
-\renewcommand{\imprimirfolhaderosto}{
-  % \begin{folhaderosto}
-
+\renewcommand{\imprimirfolhaderosto}{  
   \begin{center}
     \vspace*{4.0cm}
 
@@ -339,7 +336,7 @@
       \scriptsize
       \SingleSpacing
       \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
-    
+      
       \imprimirorientador\\
 
       % Se existir coorientador imprima seu nome.
@@ -355,54 +352,49 @@
   \end{center}
 
   \newpage
-
-  % \end{folhaderosto}
 }
 
 % --------------------------------------------------- %
 % FICHA CATALOGRÁFICA
 % --------------------------------------------------- %
-
 \providecommand{\imprimirfichacatalografica}{
-  
-  \begin{fichacatalografica}
 
-    \vspace*{\fill}
+  \vspace*{\fill}
 
-    \fbox{
-      \begin{minipage}[c][]{15 cm}
+  \fbox{
+    \begin{minipage}[c][]{15 cm}
 
+      \vspace{12pt}
+      \small{\imprimircutter~\imprimirautor}\\
+
+      \centering\begin{minipage}[c][]{13 cm}
+
+        \setlength{\parindent}{0.5cm}
+        \small
+        
+        \imprimirtitulo  / \imprimirautor. --
+        \imprimirdata.\\
+
+        \pageref{LastPage} f: il; 30 cm.\\
+        
+        \imprimirorientadorsemtitulo\\
+
+        \imprimirtipotrabalho~--~\imprimirinstituicao,
+        \imprimircurso, \imprimirdata.\\
+
+        \hspace{0.5cm}
+        \palavraschaveemitens
+        I. \imprimirorientadorcitacao\ 
+        II. \imprimirinstituicao\ 
+        III. \imprimirtitulo
+
+        \flushright{CDD \imprimircdd}
         \vspace{12pt}
-        \small{\imprimircutter~\imprimirautor}\\
-
-        \centering\begin{minipage}[c][]{13 cm}
-
-          \setlength{\parindent}{0.5cm}
-          \small
-          
-          \imprimirtitulo  / \imprimirautor. --
-          \imprimirdata.\\
-
-          \pageref{LastPage} f: il; 30 cm.\\
-          
-          \imprimirorientadorsemtitulo\\
-
-          \imprimirtipotrabalho~--~\imprimirinstituicao,
-          \imprimircurso, \imprimirdata.\\
-
-          \hspace{0.5cm}
-          \palavraschaveemitens
-          I. \imprimirorientadorcitacao\ 
-          II. \imprimirinstituicao\ 
-          III. \imprimirtitulo
-
-          \flushright{CDD \imprimircdd}
-          \vspace{12pt}
-        \end{minipage}
       \end{minipage}
-    }
+    \end{minipage}
+  }
 
-  \end{fichacatalografica}
+  \cleardoublepage
 }
 
 % --------------------------------------------------- %
@@ -590,28 +582,61 @@
 \addtocontents{lot}{\vspace{15pt}}
 \addtocontents{loq}{\vspace{15pt}}
 
+
 % --------------------------------------------------- %
 % NUMERAÇÂO DAS PÁGINAS %
 % --------------------------------------------------- %
 
-% Cria um novo estilo de cabeçalhos e rodapés.
-\makepagestyle{ifes}
+% Cria um novo estilo de cabeçalhos e rodapés para as capas.
+\makepagestyle{ifes_capas}
 
-% Cabeçalho de Página Par (Esquerda, Centro e Direita)
-\makeevenhead{ifes}{\footnotesize \thepage}{}{}
+% Cabeçalhos de Páginas Par e Ímpar (Esquerda, Centro e Direita)
+\makeevenhead{ifes_capas}{}{}{}
+\makeoddhead{ifes_capas}{}{}{}
 
-% Cabeçalho de Página Ímpar (Esquerda, Centro e Direita)
-\makeoddhead{ifes}{}{}{\footnotesize \thepage}
+% Cria a macro capa para numeração romana das capas.
+\newcommand{\capas}{
+  \pagenumbering{roman}
+  \aliaspagestyle{chapter}{ifes_capas}
+  \pagestyle{ifes_capas}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{ifes_capas}
+}
 
-% Linha abaixo do cabeçalho (Comprimento, Espessura)
-\makeheadrule{ifes}{0 pt}{0 pt}
-     
-% Rodapé de página par (Esquerda, Centro e Direita)
-\makeevenfoot{ifes}{}{}{}
+% Cria um novo estilo de cabeçalhos e rodapés para os elementos pré-textuais
+\makepagestyle{ifes_pretextual}
 
-% Rodapé de página ímpar (Esquerda, Centro e Direita)
-\makeoddfoot{ifes}{}{}{}
-   
+% Cabeçalhos de Páginas Par e Ímpar (Esquerda, Centro e Direita)
+\makeevenhead{ifes_pretextual}{}{}{}
+\makeoddhead{ifes_pretextual}{}{}{}
+
+% Customiza a macro pretextual
+\renewcommand{\pretextual}{
+  \setcounter{page}{1}
+  \pagenumbering{arabic}
+  \aliaspagestyle{chapter}{ifes_pretextual}
+  \pagestyle{ifes_pretextual}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{ifes_pretextual}
+}
+
+% Cria um novo estilo de cabeçalhos e rodapés para os elementos textuais.
+\makepagestyle{ifes_textual}
+
+% Cabeçalhos de Páginas Par e Ímpar (Esquerda, Centro e Direita)
+\makeevenhead{ifes_textual}{\ABNTEXfontereduzida\thepage}{}{}
+\makeoddhead{ifes_textual}{}{}{\ABNTEXfontereduzida\thepage}
+
+% Ajusta a marca textual para refletir os ajustes.
+\let\oldtextual\textual
+\renewcommand{\textual}{
+  \oldtextual
+  \aliaspagestyle{chapter}{ifes_textual}
+  \pagestyle{ifes_textual}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{ifes_textual}
+}
+
 % --------------------------------------------------- %
 % COMPILA O ÍNDICE %
 % --------------------------------------------------- %
