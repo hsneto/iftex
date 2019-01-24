@@ -589,6 +589,28 @@
 \addtocontents{lof}{\vspace{15pt}}
 \addtocontents{lot}{\vspace{15pt}}
 \addtocontents{loq}{\vspace{15pt}}
+
+% --------------------------------------------------- %
+% NUMERAÇÂO DAS PÁGINAS %
+% --------------------------------------------------- %
+
+% Cria um novo estilo de cabeçalhos e rodapés.
+\makepagestyle{ifes}
+
+% Cabeçalho de Página Par (Esquerda, Centro e Direita)
+\makeevenhead{ifes}{\footnotesize \thepage}{}{}
+
+% Cabeçalho de Página Ímpar (Esquerda, Centro e Direita)
+\makeoddhead{ifes}{}{}{\footnotesize \thepage}
+
+% Linha abaixo do cabeçalho (Comprimento, Espessura)
+\makeheadrule{ifes}{0 pt}{0 pt}
+     
+% Rodapé de página par (Esquerda, Centro e Direita)
+\makeevenfoot{ifes}{}{}{}
+
+% Rodapé de página ímpar (Esquerda, Centro e Direita)
+\makeoddfoot{ifes}{}{}{}
    
 % --------------------------------------------------- %
 % COMPILA O ÍNDICE %
