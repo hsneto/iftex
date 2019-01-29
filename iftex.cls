@@ -101,7 +101,7 @@
 \hbadness=10000
 
 % Legendas
-\newcommand{\source}[1][Produção do próprio autor, \imprimirdata.]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
+\newcommand{\source}[1][Elaborado pelo autor (\imprimirdata)]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
 
 \renewcommand{\legend}[1]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
 
