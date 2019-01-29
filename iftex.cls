@@ -617,12 +617,12 @@
 
 % Customiza a macro pretextual
 \renewcommand{\pretextual}{
-  \setcounter{page}{1}
   \pagenumbering{arabic}
   \aliaspagestyle{chapter}{ifes_pretextual}
   \pagestyle{ifes_pretextual}
   \aliaspagestyle{cleared}{empty}
   \aliaspagestyle{part}{ifes_pretextual}
+  \setcounter{page}{2}
 }
 
 % Cria um novo estilo de cabeçalhos e rodapés para os elementos textuais.
