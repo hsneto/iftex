@@ -86,7 +86,8 @@
 
 % Remover warning: underfull hboxes
 \hbadness=10000
-
+% Remover warning: overfull \hbox
+\hfuzz=500pt 
 
 % ------------------------------------------------------------------------------- %
 % NOVOS COMANDOS                                                                  %
