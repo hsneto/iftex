@@ -5,6 +5,10 @@ Template de Trabalho de Conclusão de Curso de acordo com as [Normas para Aprese
 
 * **Humberto da Silva Neto**
 
+### Contruibuições
+
+* **Daniel Campos Pompermayer**
+
 ## Licença
 
 Este projeto está licenciado sob a licença LPPL - consulte o arquivo [LICENSE](LICENSE) para detalhes.
