@@ -1,166 +1,52 @@
-\documentclass[
-  12pt,				    % tamanho da fonte
-  openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-  oneside,			  % para impressão em recto e verso. Oposto a oneside
-  a4paper,			  % tamanho do papel. 
-  chapter=TITLE,  % títulos de capítulos convertidos em letras maiúsculas
-  section=TITLE,  % títulos de seções convertidos em letras maiúsculas
-  english,			  % idioma adicional para hifenização
-  french,				  % idioma adicional para hifenização
-  spanish,			  % idioma adicional para hifenização
-  brazil				  % o último idioma é o principal do documento
-]{iftex}
+\input{configuracoes}
 
-%% Arial: 
-% Para usar times-new-roman, comente as três linhas abaixo
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
-\renewcommand{\ABNTEXchapterfont}{\bfseries}
-
-\usepackage{easyReview} % Comandos para revisar o texto
-
-%% Macros de dados do documento
-\autor{Autor do projeto}
-\titulo{Título do projeto}
-\instituicao{Instituto federal do espírito santo}
-\curso{Curso de Engenharia Elétrica}
-\local{Vitória}
-\data{2018}
-
-\tipotrabalho{Trabalho de Graduação}
-\preambulo{Trabalho de Conclusão de Curso apresentado à Coordenadoria do Curso de Engenharia Elétrica do
-Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo, como requisito parcial para a obtenção do título de Engenheiro Eletricista.}
-\orientador{Prof. Dr. Beltrano de Tal}{Orientador}
-\coorientador{Profa. Dra. Beltrana de Tal}{Coorientadora}
+\input{dados}
 
 \begin{document}
 
-  % Seleciona o idioma do documento
-  \selectlanguage{brazil}
+  % --------------------------------------------------- %
+  % CAPAS                                               %
+  % --------------------------------------------------- %
+
+  % CAPA E FOLHA DE ROSTO
+  \capas
+  \imprimircapa
+  \imprimirfolhaderosto
+
+  % FICHA CATALOGRAFICA
+  % OBS.: Após receber a ficha da biblioteca, comente a macro abaixo:
+  \imprimirfichacatalografica
+  % E descomente as demais:
+  % \begin{fichacatalografica}
+  %   \includepdf{fig_ficha_catalografica.pdf}
+  % \end{fichacatalografica}
+
+  % --------------------------------------------------- %
+  % ELEMENTOS PRÉ-TEXTUAIS                              %
+  % --------------------------------------------------- %
   
-  % Insere a pasta onde estão contidas as figuras
-  \graphicspath{{figuras/}}
-
-  % --------------------------------------------------- %
-  % ELEMENTOS PRE-TEXTUAIS %
-  % --------------------------------------------------- %
-
+  % APROVAÇÃO, DEDICATÓRIA, AGRADECIMENTOS, EPÍGRAFE
   \pretextual
-
-  % CAPA E CONTRA-CAPA
-	\imprimircapa
-	\imprimirfolhaderosto
-   
-  % FICHA CATALOGRAFICA ==> Adicione com anexo
-	% \begin{fichacatalografica}
-  % \includepdf{fig_ficha_catalografica.pdf}
-	% \end{fichacatalografica}
-
-  % FOLHA DE APROVAÇÃO
-  \orientadori{Prof. Dr. Beltrano de Tal}{Instituto Federal do Espírito Santo}{Orientador}
-  \orientadorii{Profa. Dra. Beltrana de Tal}{Instituto Federal do Espírito Santo}{Coorientadora}
-  \examinadori{Profa. Dra. Fulana de Tal}{Instituto Federal do Espírito Santo}{Examinadora}
-  \examinadorii{Prof. Dr. Cicrano de Tal}{Instituto Federal do Espírito Santo}{Examinador}
-  \approvaldate{01}{Dezembro}{2018}
-
-  \begin{folhadeaprovacao}
-    \begin{center}
-      \centering
-      
-      {\bfseries\MakeUppercase\imprimirautor}
-      \vspace*{1.5cm}
-      
-      {\bfseries\MakeUppercase\imprimirtitulo}
-      
-      \hspace{.40\textwidth}
-      \begin{minipage}{9cm}
-        \footnotesize
-        \SingleSpacing
-        \imprimirpreambulo
-      \end{minipage}
-        
-      \vspace{1.0cm}  
-      \imprimirapprovaldate
-      \vspace{1.0cm}
-      
-      {\bfseries\MakeUppercase{comissão examinadora}}
-      \vspace{-0.5cm}
-      
-      \assinaturaorientador
-      \assinaturacoorientador
-      \assinaturaexaminadori
-      \assinaturaexaminadorii
-      \assinaturaexaminadoriii
-    \end{center}
-  \end{folhadeaprovacao}    
-
-  % DEDICATÓRIA
-  \begin{dedicatoria}
-    \vspace*{\fill}
-    \noindent
-
-    \begin{flushright}
-      \textit{
-        \textbf{Dedicatoria:} É um elemento opcional. Contém o oferecimento do trabalho adeterminada pessoa ou a pessoas (ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2011b).} 
-    \end{flushright}
-
-    \vspace*{2.0cm}
-	\end{dedicatoria}
-    
-  % AGRADECIMENTOS
-  \begin{agradecimentos}
-    É um elemento opcional. Localiza-se após a folha de aprovação e deve ser dirigido àqueles que realmente contribuíram, de maneira relevante,para a elaboração do trabalho. Deve-se utilizar uma linguagem simples (ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2011b).
-  \end{agradecimentos}
-  
-  % EPIGRAFE
-  \begin{epigrafe}
-    \vspace*{\fill}
-    \begin{center}
-      \textbf{Epigrafe:} É um elemento opcional. É uma citação relacionada ao assunto do trabalho desenvolvido, seguida da indicação de autoria (ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2011b).   Deve-se seguir as regras do uso da citação NBR 10.520/2002. 
-    \end{center}
-  \end{epigrafe}
+  \imprimiraprovacao
+  \imprimirdedicatoria
+  \imprimiragradecimentos
+  \imprimirepigrafe
   
   % RESUMO - PT/EN
   \include{capitulos/resumo}
 
-  % LISTA DE FIGURAS
-  \pdfbookmark[0]{\listfigurename}{lof}
-  \listoffigures*
-  \cleardoublepage
-
-  % LISTA DE TABELAS
-  \pdfbookmark[0]{\listtablename}{lot}
-  \listoftables*
-  \cleardoublepage
-
-  % LISTA DE QUADROS
-  \pdfbookmark[0]{\listofquadrosname}{loq}
-  \listofquadros*
-  \cleardoublepage
-
-  % LISTA DE ABREVIATUAS E SIGLAS
-  \begin{siglas}
-    \item[Ifes] Instituto Federal do Espírito Santo
-  \end{siglas}
-
-  % LISTA DE SÍBOLOS
-  \begin{simbolos}
-    \item[$\lambda$] Letra grega labda
-  \end{simbolos}
-
-  % SUMÁRIO
-  \pdfbookmark[0]{\contentsname}{toc}
-  \tableofcontents*
-  \cleardoublepage
+  % LISTAS E SUMÁRIO
+  \imprimirlistafiguras
+  \imprimirlistatabelas
+  \imprimirlistaquadros
+  \imprimirlistasiglas
+  \imprimirlistasimbolos
+  \imprimirsumario
 
   % --------------------------------------------------- %
-  % ELEMENTOS TEXTUAIS %
+  % ELEMENTOS TEXTUAIS                                  %
   % --------------------------------------------------- %
-    
   \textual
-  \pagestyle{simple}
-  \aliaspagestyle{chapter}{simple}
-  
   \input{capitulos/introducao}
   \input{capitulos/ref_teorico}
   \input{capitulos/conclusao}
@@ -171,7 +57,6 @@ Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo, como 
   % --------------------------------------------------- %
   % ELEMENTOS POS-TEXTUAIS %
   % --------------------------------------------------- %
-
   \postextual
   
   % Referencias Bibliográficas

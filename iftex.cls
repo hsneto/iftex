@@ -50,12 +50,14 @@
 \usepackage{microtype} 			  % para melhorias de justificação
 
 \usepackage[brazilian,hyperpageref]{backref}
-\usepackage[abnt-emphasize=bf, alf]{abntex2cite} % Citações padrão ABNT
+\usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes]{abntex2cite} % Citações padrão ABNT
 
 \usepackage{parskip}			    % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage[caption=false,font=normalsize]{subfig}
+
+\usepackage{xparse}                    % Mais de um argumento opcional nos macros
 
 %% Flush captions to left
 \hangcaption
@@ -70,14 +72,15 @@
 % Texto padrão antes do número das páginas
 \renewcommand{\backref}{}
 % Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-% 		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
+% \renewcommand*{\backrefalt}[4]{
+% 	\ifcase #1 %
+% 		Nenhuma citação no texto.%
+% 	\or
+% % 		Citado na página #2.%
+% 	\else
+% 		Citado #1 vezes nas páginas #2.%
+%   \fi}%
+\renewcommand*{\backrefalt}[4]{}%
 
 % --------------------------------------------------- %
 % MARGENS %
@@ -98,7 +101,7 @@
 \hbadness=10000
 
 % Legendas
-\newcommand{\source}[1][Produção do próprio autor.]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
+\newcommand{\source}[1][Elaborado pelo autor (\imprimirdata)]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
 
 \renewcommand{\legend}[1]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
 
@@ -128,33 +131,332 @@
 \providecommand{\imprimirapprovaldate}{}
 \newcommand{\approvaldate}[3]{\renewcommand{\imprimirapprovaldate}{Aprovado em #1 de #2 de #3}}
 
-%  Assinaturas de orientadores examinadores
-\renewcommand{\orientador}[2]{\renewcommand{\imprimirorientador}{#2: #1}}
+% Palavras chave
+\providecommand{\palavrachaveum}{}
+\providecommand{\palavrachavedois}{}
+\providecommand{\palavrachavetres}{}
+\providecommand{\palavrachavequatro}{}
+\providecommand{\palavrachavecinco}{}
+\providecommand{\palavrachaveseis}{}
+\NewDocumentCommand{\palavraschave}{m O{} O{} O{} O{} O{}}{
+  \renewcommand{\palavrachaveum}{#1}
+  \renewcommand{\palavrachavedois}{#2}
+  \renewcommand{\palavrachavetres}{#3}
+  \renewcommand{\palavrachavequatro}{#4}
+  \renewcommand{\palavrachavecinco}{#5}
+  \renewcommand{\palavrachaveseis}{#6}
+}
 
-\renewcommand{\coorientador}[2]{\renewcommand{\imprimircoorientador}{#2: #1}}
+\newcommand{\palavraschaveemlinha}{
+  \ifthenelse{\equal{\palavrachaveum}{}}{}{\palavrachaveum.\ }
+  \ifthenelse{\equal{\palavrachavedois}{}}{}{\palavrachavedois.\ }
+  \ifthenelse{\equal{\palavrachavetres}{}}{}{\palavrachavetres.\ }
+  \ifthenelse{\equal{\palavrachavequatro}{}}{}{\palavrachavequatro.\ }
+  \ifthenelse{\equal{\palavrachavecinco}{}}{}{\palavrachavecinco.\ }
+  \ifthenelse{\equal{\palavrachaveseis}{}}{}{\palavrachaveseis.\ }
+}
 
-\providecommand{\assinaturaorientador}{}
-\newcommand{\orientadori}[3]{\renewcommand{\assinaturaorientador}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\palavraschaveemitens}{
+  \ifthenelse{\equal{\palavrachaveum}{}}{}{1. \palavrachaveum\ }
+  \ifthenelse{\equal{\palavrachavedois}{}}{}{2. \palavrachavedois\ }
+  \ifthenelse{\equal{\palavrachavetres}{}}{}{3. \palavrachavetres\ }
+  \ifthenelse{\equal{\palavrachavequatro}{}}{}{4. \palavrachavequatro\ }
+  \ifthenelse{\equal{\palavrachavecinco}{}}{}{5. \palavrachavecinco\ }
+  \ifthenelse{\equal{\palavrachaveseis}{}}{}{6. \palavrachaveseis\ }
+}
 
-\providecommand{\assinaturacoorientador}{}
-\newcommand{\orientadorii}[3]{\renewcommand{\assinaturacoorientador}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+% Keywords
+
+\providecommand{\keywordone}{}
+\providecommand{\keywordtwo}{}
+\providecommand{\keywordthree}{}
+\providecommand{\keywordfour}{}
+\providecommand{\keywordfive}{}
+\providecommand{\keywordsix}{}
+\NewDocumentCommand{\keywords}{m O{} O{} O{} O{} O{}}{
+  \renewcommand{\keywordone}{#1}
+  \renewcommand{\keywordtwo}{#2}
+  \renewcommand{\keywordthree}{#3}
+  \renewcommand{\keywordfour}{#4}
+  \renewcommand{\keywordfive}{#5}
+  \renewcommand{\keywordsix}{#6}
+}
+
+\newcommand{\inlinekeywords}{
+  \ifthenelse{\equal{\keywordone}{}}{}{\keywordone.\ }
+  \ifthenelse{\equal{\keywordtwo}{}}{}{\keywordtwo.\ }
+  \ifthenelse{\equal{\keywordthree}{}}{}{\keywordthree.\ }
+  \ifthenelse{\equal{\keywordfour}{}}{}{\keywordfour.\ }
+  \ifthenelse{\equal{\keywordfive}{}}{}{\keywordfive.\ }
+  \ifthenelse{\equal{\keywordsix}{}}{}{\keywordsix.\ }
+}
+
+% Cutter e CDD
+\providecommand{\imprimircutter}{X999x}
+\newcommand{\cutter}[1]{\renewcommand{\imprimircutter}{#1}}
+
+\providecommand{\imprimircdd}{999.99}
+\newcommand{\cdd}[1]{\renewcommand{\imprimircdd}{#1}}
+
+% Assinaturas de orientadores examinadores
+\RenewDocumentCommand{\orientador}{O{Orientador} O{} m O{} m}{
+  \ifthenelse{\equal{#1}{}}{
+    \renewcommand{\imprimirorientador}{#2 #3 #4}
+    \newcommand{\imprimirorientadorsemtitulo}{#3 #4}
+    \newcommand{\assinaturaorientador}{\textbf{#2 #3 #4}\\ #5 \\ \vspace*{\fill}}
+  }{
+    \renewcommand{\imprimirorientador}{#1: #2 #3 #4}
+    \newcommand{\imprimirorientadorsemtitulo}{#1: #3 #4}
+    \newcommand{\assinaturaorientador}{
+      \textbf{#2 #3 #4}\\ #5 \\ #1\\ \vspace*{\fill}}
+  }
+  
+  \ifthenelse{\equal{#4}{}}{
+    \newcommand{\imprimirorientadorcitacao}{#3}
+  }{
+    \newcommand{\imprimirorientadorcitacao}{#4, #3}
+  }
+}
+
+\RenewDocumentCommand{\coorientador}{O{Coorientador} O{} m O{} m}{
+  \ifthenelse{\equal{#1}{}}{
+    \renewcommand{\imprimircoorientador}{#2 #3 #4}
+    \newcommand{\assinaturacoorientador}{
+      \textbf{#2 #3 #4}\\ #5 \\ \vspace*{\fill}}
+  }{
+    \renewcommand{\imprimircoorientador}{#1: #2 #3 #4}
+    \newcommand{\assinaturacoorientador}{
+      \textbf{#2 #3 #4}\\ #5 \\ #1\\ \vspace*{\fill}}
+  }
+}
 
 \providecommand{\assinaturaexaminadori}{}
-\newcommand{\examinadori}[3]{\renewcommand{\assinaturaexaminadori}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\examinadori}[3]{\renewcommand{\assinaturaexaminadori}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
 \providecommand{\assinaturaexaminadorii}{}
-\newcommand{\examinadorii}[3]{\renewcommand{\assinaturaexaminadorii}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\examinadorii}[3]{\renewcommand{\assinaturaexaminadorii}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
 \providecommand{\assinaturaexaminadoriii}{}
-\newcommand{\examinadoriii}[3]{\renewcommand{\assinaturaexaminadoriii}{\assinatura{\textbf{#1} \\ #2 \\ #3}}}
+\newcommand{\examinadoriii}[3]{\renewcommand{\assinaturaexaminadoriii}{\textbf{#1} \\ #2 \\ #3\\ \vspace*{\fill}}}
 
-% Folha de Aprovação
-\providecommand{\imprimiraprovacao}{}
+% Referencias
+\renewcommand{\bibname}{Referências}
 
-% Lista de Figuras
+% --------------------------------------------------- %
+% CAPA                                                %
+% --------------------------------------------------- %
+\renewcommand{\imprimircapa}{
+
+  \begin{center}
+    \MakeUppercase\imprimirinstituicao\\
+    \MakeUppercase\imprimircurso
+    \vspace*{3.0cm}
+
+    \textbf{\MakeUppercase\imprimirautor}
+    \vspace*{3.5cm}
+
+    \textbf{\MakeUppercase\imprimirtitulo}
+    \vfill
+  
+    \imprimirlocal\\
+    \imprimirdata
+  \end{center}
+
+
+  \cleardoublepage
+}
+
+% --------------------------------------------------- %
+% FOLHA DE ROSTO %
+% --------------------------------------------------- %
+\renewcommand{\imprimirfolhaderosto}{  
+  \begin{center}
+    \vspace*{4.0cm}
+
+    \MakeUppercase\imprimirautor
+    \vspace*{2.5cm}
+
+    \textbf{\MakeUppercase\imprimirtitulo}
+    \vspace*{\fill}
+  \end{center}
+
+  % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
+  % para a sua impressão.
+
+  \begin{flushright}
+    \begin{minipage}{8cm}
+      \scriptsize
+      \SingleSpacing
+      \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+      
+      \imprimirorientador\\
+
+      % Se existir coorientador imprima seu nome.
+      \ifthenelse{\equal{\imprimircoorientador}{}}{}{\imprimircoorientador}
+    \end{minipage}
+  \end{flushright}
+
+  \vfill
+  
+  \begin{center}
+    \imprimirlocal\\
+    \imprimirdata
+  \end{center}
+
+  \newpage
+}
+
+% --------------------------------------------------- %
+% FICHA CATALOGRÁFICA
+% --------------------------------------------------- %
+\providecommand{\imprimirfichacatalografica}{
+
+  \vspace*{\fill}
+
+  \fbox{
+    \begin{minipage}[c][]{15 cm}
+
+      \vspace{12pt}
+      \small{\imprimircutter~\imprimirautor}\\
+
+      \centering\begin{minipage}[c][]{13 cm}
+
+        \setlength{\parindent}{0.5cm}
+        \small
+        
+        \imprimirtitulo  / \imprimirautor. --
+        \imprimirdata.\\
+
+        \pageref{LastPage} f: il; 30 cm.\\
+        
+        \imprimirorientadorsemtitulo\\
+
+        \imprimirtipotrabalho~--~\imprimirinstituicao,
+        \imprimircurso, \imprimirdata.\\
+
+        \hspace{0.5cm}
+        \palavraschaveemitens
+        I. \imprimirorientadorcitacao\ 
+        II. \imprimirinstituicao\ 
+        III. \imprimirtitulo
+
+        \flushright{CDD \imprimircdd}
+        \vspace{12pt}
+      \end{minipage}
+    \end{minipage}
+  }
+
+  \cleardoublepage
+}
+
+% --------------------------------------------------- %
+% FOLHA DE APROVAÇÃO                                  %
+% --------------------------------------------------- %
+\providecommand{\imprimiraprovacao}{
+  \begin{folhadeaprovacao}
+    
+    \begin{center}
+      \textbf{\MakeUppercase\imprimirautor}
+      \vspace*{\fill}
+
+      \linespread{1.6}
+      \textbf{\MakeUppercase\imprimirtitulo}
+      \vspace*{\fill}
+    \end{center}
+
+    \begin{flushright}
+      \begin{minipage}{8cm}
+        \scriptsize
+        \SingleSpacing
+        \ifthenelse{\equal{\imprimirpreambulo}{}}{}{\imprimirpreambulo\\}
+      \end{minipage}
+      \vspace*{\fill}
+    \end{flushright}
+
+    
+    \begin{center}
+      \imprimirapprovaldate
+      \vspace*{\fill}
+    
+      \textbf{\MakeUppercase{comissão examinadora}}
+      \vspace*{\fill}
+    
+      \assinaturaorientador
+      \assinaturacoorientador
+      \assinaturaexaminadori
+      \assinaturaexaminadorii
+      \assinaturaexaminadoriii
+    \end{center}
+
+  \end{folhadeaprovacao}
+}
+
+% --------------------------------------------------- %
+% DEDICATÓRIA
+% --------------------------------------------------- %
+\providecommand{\imprimirdedicatoria}{}
+\newcommand{\editardedicatoria}[1]{
+  \renewcommand{\imprimirdedicatoria}{
+    \begin{dedicatoria}
+      \vspace*{\fill}
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+        #1
+      \end{minipage}
+      \vspace*{2.0cm}
+    \end{dedicatoria}
+  }
+}
+
+% --------------------------------------------------- %
+% AGRADECIMENTOS
+% --------------------------------------------------- %
+\providecommand{\imprimiragradecimentos}{}
+\newcommand{\editaragradecimentos}[1]{
+  \renewcommand{\imprimiragradecimentos}{  
+    \begin{agradecimentos}
+      #1
+    \end{agradecimentos}
+  }
+}
+
+% --------------------------------------------------- %
+% EPÍGRAFE
+% --------------------------------------------------- %
+\providecommand{\imprimirepigrafe}{}
+\newcommand{\editarepigrafe}[1]{
+  \renewcommand{\imprimirepigrafe}{
+    \begin{epigrafe}
+      \vspace*{\fill}
+      \begin{center}
+        #1
+      \end{center}
+    \end{epigrafe}
+  }
+}
+
+% --------------------------------------------------- %
+% LISTA DE FIGURAS
+% --------------------------------------------------- %
 \renewcommand{\listfigurename}{Lista de figuras}
+\newcommand{\imprimirlistafiguras}{
+  \pdfbookmark[0]{\listfigurename}{lof}
+  \listoffigures*
+  \cleardoublepage
+}
 
-% Lista de Quadros
+% --------------------------------------------------- %
+% LISTA DE TABELAS
+% --------------------------------------------------- %
+\newcommand{\imprimirlistatabelas}{
+  \pdfbookmark[0]{\listtablename}{lot}
+  \listoftables*
+  \cleardoublepage
+}
+
+% --------------------------------------------------- %  
+% LISTA DE QUADROS
+% --------------------------------------------------- %
 \newcommand{\quadroname}{Quadro}
 \newcommand{\listofquadrosname}{Lista de Quadros}
 
@@ -165,71 +467,36 @@
 \counterwithout{quadro}{chapter}
 \renewcommand{\cftquadroname}{\quadroname\space} 
 \renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
-
-% Referencias
-\renewcommand{\bibname}{Referências}
-
-% --------------------------------------------------- %
-% CAPA %
-% --------------------------------------------------- %
-\renewcommand{\imprimircapa}{
-  \begin{capa}
-    
-    \centering  	
-	{\MakeUppercase\imprimirinstituicao
-    \\
-    \MakeUppercase\imprimircurso}
-	\vspace*{3.0cm}
-
-    {\bfseries\MakeUppercase\imprimirautor}
-    \vspace*{3.5cm}
-
-    {\bfseries\MakeUppercase\imprimirtitulo}
-    \vfill
-	    
-    \imprimirlocal \\ \imprimirdata
-
-\end{capa}}
+\newcommand{\imprimirlistaquadros}{
+  \pdfbookmark[0]{\listofquadrosname}{loq}
+  \listofquadros*
+  \cleardoublepage
+}
 
 % --------------------------------------------------- %
-% FOLHA DE ROSTO %
+% LISTA DE ABREVIATUAS E SIGLAS
 % --------------------------------------------------- %
+\providecommand{\imprimirlistasiglas}{}
+\newcommand{\editarlistasiglas}[1]{
+  \renewcommand{\imprimirlistasiglas}{#1}
+}
 
-\renewcommand{\imprimirfolhaderosto}{
-  \begin{folhaderosto}
-    
-    \centering  	
-    \vspace*{2.0cm}
-
-    {\bfseries\MakeUppercase\imprimirautor}
-    \vspace*{3.5cm}
-
-    {\bfseries\MakeUppercase\imprimirtitulo}
-    \vspace*{3.0cm}
-    
-    \abntex@ifnotempty{\imprimirpreambulo}{%
-      \hspace{.40\textwidth}
-      \begin{minipage}{9cm}
-        \footnotesize 
-        \SingleSpacing
-        \imprimirpreambulo
-        \newline\newline
-        \imprimirorientador
-        \par
-        \ifthenelse{\equal{\imprimircoorientador}{}}
-        { 
-          % Não escreve nada se não tiver coorientador
-        }
-        {
-          \imprimircoorientador
-        }
-      \end{minipage}}%
-
-    \vfill
-    
-    \imprimirlocal \\ \imprimirdata
-
-  \end{folhaderosto}}
+% --------------------------------------------------- %
+% LISTA DE SÍMBOLOS
+% --------------------------------------------------- %
+\providecommand{\imprimirlistasimbolos}{}
+\newcommand{\editarlistasimbolos}[1]{
+  \renewcommand{\imprimirlistasimbolos}{#1}
+}
+  
+% --------------------------------------------------- %
+% SUMÁRIO
+% --------------------------------------------------- %
+\newcommand{\imprimirsumario}{
+  \pdfbookmark[0]{\contentsname}{toc}
+  \tableofcontents*
+  \cleardoublepage
+}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
@@ -256,7 +523,7 @@
 % CONFIGURAÇÃO DO listings %
 % --------------------------------------------------- %
 
-\definecolor{backcolour}{RGB}{245,245,245}
+\definecolor{backcolour}{RGB}{255,255,255}
 \definecolor{commentcolour}{RGB}{0,128,0}
 \definecolor{keywordcolour}{RGB}{249,38,114}
 \definecolor{stringcolour}{RGB}{255,102,0}
@@ -279,7 +546,8 @@
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2
+    tabsize=4,
+    linewidth=79em
 }
  
 \lstset{style=mystyle}
@@ -319,7 +587,61 @@
 \addtocontents{lof}{\vspace{15pt}}
 \addtocontents{lot}{\vspace{15pt}}
 \addtocontents{loq}{\vspace{15pt}}
-   
+
+% --------------------------------------------------- %
+% NUMERAÇÂO DAS PÁGINAS %
+% --------------------------------------------------- %
+
+% Cria um novo estilo de cabeçalhos e rodapés para as capas.
+\makepagestyle{ifes_capas}
+
+% Cabeçalhos de Páginas Par e Ímpar (Esquerda, Centro e Direita)
+\makeevenhead{ifes_capas}{}{}{}
+\makeoddhead{ifes_capas}{}{}{}
+
+% Cria a macro capa para numeração romana das capas.
+\newcommand{\capas}{
+  \pagenumbering{roman}
+  \aliaspagestyle{chapter}{ifes_capas}
+  \pagestyle{ifes_capas}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{ifes_capas}
+}
+
+% Cria um novo estilo de cabeçalhos e rodapés para os elementos pré-textuais
+\makepagestyle{ifes_pretextual}
+
+% Cabeçalhos de Páginas Par e Ímpar (Esquerda, Centro e Direita)
+\makeevenhead{ifes_pretextual}{}{}{}
+\makeoddhead{ifes_pretextual}{}{}{}
+
+% Customiza a macro pretextual
+\renewcommand{\pretextual}{
+  \pagenumbering{arabic}
+  \aliaspagestyle{chapter}{ifes_pretextual}
+  \pagestyle{ifes_pretextual}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{ifes_pretextual}
+  \setcounter{page}{2}
+}
+
+% Cria um novo estilo de cabeçalhos e rodapés para os elementos textuais.
+\makepagestyle{ifes_textual}
+
+% Cabeçalhos de Páginas Par e Ímpar (Esquerda, Centro e Direita)
+\makeevenhead{ifes_textual}{\ABNTEXfontereduzida\thepage}{}{}
+\makeoddhead{ifes_textual}{}{}{\ABNTEXfontereduzida\thepage}
+
+% Ajusta a marca textual para refletir os ajustes.
+\let\oldtextual\textual
+\renewcommand{\textual}{
+  \oldtextual
+  \aliaspagestyle{chapter}{ifes_textual}
+  \pagestyle{ifes_textual}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{ifes_textual}
+}
+
 % --------------------------------------------------- %
 % COMPILA O ÍNDICE %
 % --------------------------------------------------- %
