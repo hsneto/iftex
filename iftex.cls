@@ -18,12 +18,11 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[18/12/2018 v1.1 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.2 Modelo de TCC baseado em abnTeX2]
 
-% --------------------------------------------------- %
-% PARÂMETROS INICIAIS DO ABNTEX2 %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% PARÂMETROS INICIAIS DO ABNTEX2                                                  %
+% ------------------------------------------------------------------------------- %
 % Repassa todos os parametros a classe abntex2
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{abntex2}}
@@ -31,81 +30,69 @@
 \ProcessOptions\relax
 \LoadClass{abntex2}
 
-% --------------------------------------------------- %
-% PACKAGES %
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% PACKAGES                                                                        %
+% ------------------------------------------------------------------------------- %
+\usepackage{tocloft}
+\PassOptionsToClass{titles}{tocloft}
 
-\usepackage{tocloft} 
-\usepackage{cmap}             % Mapear caracteres especiais no PDF
-\usepackage[utf8]{inputenc}   % Codificacao do documento
-\usepackage{lastpage}         % Para total de páginas
-
-\usepackage{mathptmx}         % Usa a fonte times
-
-\usepackage[T1]{fontenc}		  % Selecao de codigos de fonte
-\usepackage{lastpage}			    % Usado pela Ficha catalográfica
-\usepackage{indentfirst}		  % Indenta o primeiro parágrafo de cada seção
-\usepackage{color}			      % Controle das cores
-\usepackage{graphicx}			    % Inclusão de gráficos
-\usepackage{microtype} 			  % para melhorias de justificação
+\usepackage{cmap}               % Mapear caracteres especiais no PDF
+\usepackage[utf8]{inputenc}     % Codificacao do documento
+\usepackage{lastpage}           % Para total de páginas
+\usepackage{mathptmx}           % Usa a fonte times
+\usepackage[T1]{fontenc}		    % Selecao de codigos de fonte
+\usepackage{lastpage}			      % Usado pela Ficha catalográfica
+\usepackage{indentfirst}		    % Indenta o primeiro parágrafo de cada seção
+\usepackage[dvipsnames]{xcolor} % Controle das cores
+\usepackage{graphicx}			      % Inclusão de gráficos
+\usepackage{microtype} 			    % para melhorias de justificação
 
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes]{abntex2cite} % Citações padrão ABNT
 
-\usepackage{parskip}			    % espaçamento entre os parágrafos
+\usepackage{parskip}			      % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage[caption=false,font=normalsize]{subfig}
 
-\usepackage{xparse}                    % Mais de um argumento opcional nos macros
+\usepackage{xparse}             % Mais de um argumento opcional nos macros
 
 %% Flush captions to left
 \hangcaption
-\captionstyle[\raggedright]{
+\captionstyle[\raggedright]{}
 
-%% page number footsize
-\renewcomman{\pagenumbering}{\footnotesize\arabic{page}}
-
-% --------------------------------------------------- %
-% CONFIGURAÇÕES DO PACOTE BACKREF %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% CONFIGURAÇÕES DO PACOTE BACKREF                                                 %
+% ------------------------------------------------------------------------------- %
 % Usado sem a opção hyperpageref de backref
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 % Texto padrão antes do número das páginas
 \renewcommand{\backref}{}
 % Define os textos da citação
-% \renewcommand*{\backrefalt}[4]{
-% 	\ifcase #1 %
-% 		Nenhuma citação no texto.%
-% 	\or
-% % 		Citado na página #2.%
-% 	\else
-% 		Citado #1 vezes nas páginas #2.%
-%   \fi}%
 \renewcommand*{\backrefalt}[4]{}%
 
-% --------------------------------------------------- %
-% MARGENS %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% MARGENS DO DOCUMENTO                                                            %
+% ------------------------------------------------------------------------------- %
 \setlrmarginsandblock{3cm}{2cm}{*}
 \setulmarginsandblock{3cm}{2cm}{*}
 \checkandfixthelayout
 
-% --------------------------------------------------- %
-% NOVOS COMANDOS %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% LIDANDO COM WARNINGS                                                            %
+% ------------------------------------------------------------------------------- %
 % Remover warning: Token not allowed in a PDF string (PDFDocEncoding): (hyperref) removing `\uppercase' 
 \pdfstringdefDisableCommands{\let\uppercase\relax}
 
 % Remover warning: underfull hboxes
 \hbadness=10000
 
+
+% ------------------------------------------------------------------------------- %
+% NOVOS COMANDOS                                                                  %
+% ------------------------------------------------------------------------------- %
 % Legendas
 \newcommand{\source}[1][Elaborado pelo autor (\imprimirdata)]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
-
 \renewcommand{\legend}[1]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
 
 % Títulos 
@@ -169,7 +156,6 @@
 }
 
 % Keywords
-
 \providecommand{\keywordone}{}
 \providecommand{\keywordtwo}{}
 \providecommand{\keywordthree}{}
@@ -245,9 +231,9 @@
 % Referencias
 \renewcommand{\bibname}{Referências}
 
-% --------------------------------------------------- %
-% CAPA                                                %
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% CAPA                                                                            %
+% ------------------------------------------------------------------------------- %
 \renewcommand{\imprimircapa}{
 
   \begin{center}
@@ -269,12 +255,12 @@
   \cleardoublepage
 }
 
-% --------------------------------------------------- %
-% FOLHA DE ROSTO %
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% FOLHA DE ROSTO                                                                  %
+% ------------------------------------------------------------------------------- %
 \renewcommand{\imprimirfolhaderosto}{  
   \begin{center}
-    \vspace*{4.0cm}
+    \vspace*{2.0cm}
 
     \MakeUppercase\imprimirautor
     \vspace*{2.5cm}
@@ -309,9 +295,9 @@
   \newpage
 }
 
-% --------------------------------------------------- %
-% FICHA CATALOGRÁFICA
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% FICHA CATALOGRÁFICA                                                             %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimirfichacatalografica}{
 
   \vspace*{\fill}
@@ -352,9 +338,9 @@
   \cleardoublepage
 }
 
-% --------------------------------------------------- %
-% FOLHA DE APROVAÇÃO                                  %
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% FOLHA DE APROVAÇÃO                                                              %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimiraprovacao}{
   \begin{folhadeaprovacao}
     
@@ -394,9 +380,9 @@
   \end{folhadeaprovacao}
 }
 
-% --------------------------------------------------- %
-% DEDICATÓRIA
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% DEDICATÓRIA                                                                     %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimirdedicatoria}{}
 \newcommand{\editardedicatoria}[1]{
   \renewcommand{\imprimirdedicatoria}{
@@ -411,9 +397,9 @@
   }
 }
 
-% --------------------------------------------------- %
-% AGRADECIMENTOS
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% AGRADECIMENTOS                                                                  %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimiragradecimentos}{}
 \newcommand{\editaragradecimentos}[1]{
   \renewcommand{\imprimiragradecimentos}{  
@@ -423,9 +409,9 @@
   }
 }
 
-% --------------------------------------------------- %
-% EPÍGRAFE
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% EPÍGRAFE                                                                        %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimirepigrafe}{}
 \newcommand{\editarepigrafe}[1]{
   \renewcommand{\imprimirepigrafe}{
@@ -434,13 +420,14 @@
       \begin{center}
         #1
       \end{center}
+      \vspace*{3cm}
     \end{epigrafe}
   }
 }
 
-% --------------------------------------------------- %
-% LISTA DE FIGURAS
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% LISTA DE FIGURAS                                                                %
+% ------------------------------------------------------------------------------- %
 \renewcommand{\listfigurename}{Lista de figuras}
 \newcommand{\imprimirlistafiguras}{
   \pdfbookmark[0]{\listfigurename}{lof}
@@ -448,18 +435,18 @@
   \cleardoublepage
 }
 
-% --------------------------------------------------- %
-% LISTA DE TABELAS
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% LISTA DE TABELAS                                                                %
+% ------------------------------------------------------------------------------- %
 \newcommand{\imprimirlistatabelas}{
   \pdfbookmark[0]{\listtablename}{lot}
   \listoftables*
   \cleardoublepage
 }
 
-% --------------------------------------------------- %  
-% LISTA DE QUADROS
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %  
+% LISTA DE QUADROS                                                                %
+% ------------------------------------------------------------------------------- %
 \newcommand{\quadroname}{Quadro}
 \newcommand{\listofquadrosname}{Lista de Quadros}
 
@@ -476,56 +463,55 @@
   \cleardoublepage
 }
 
-% --------------------------------------------------- %
-% LISTA DE ABREVIATUAS E SIGLAS
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% LISTA DE ABREVIATUAS E SIGLAS                                                   %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimirlistasiglas}{}
+\renewcommand{\listadesiglasname}{Lista de Siglas}
 \newcommand{\editarlistasiglas}[1]{
   \renewcommand{\imprimirlistasiglas}{#1}
 }
 
-% --------------------------------------------------- %
-% LISTA DE SÍMBOLOS
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% LISTA DE SÍMBOLOS                                                               %
+% ------------------------------------------------------------------------------- %
 \providecommand{\imprimirlistasimbolos}{}
 \newcommand{\editarlistasimbolos}[1]{
   \renewcommand{\imprimirlistasimbolos}{#1}
 }
-  
-% --------------------------------------------------- %
-% SUMÁRIO
-% --------------------------------------------------- %
+
+% ------------------------------------------------------------------------------- %
+% SUMÁRIO                                                                         %
+% ------------------------------------------------------------------------------- %
 \newcommand{\imprimirsumario}{
   \pdfbookmark[0]{\contentsname}{toc}
   \tableofcontents*
   \cleardoublepage
 }
 
-% --------------------------------------------------- %
-% CONFIGURAÇÕES DO ASPECTO FINAL DO PDF %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% CONFIGURAÇÕES DO ASPECTO FINAL DO PDF                                           %
+% ------------------------------------------------------------------------------- %
 \makeatletter
 \hypersetup{
   % pagebackref=true,
-	pdftitle={\@title}, 
-	pdfauthor={\@author},
+  pdftitle={\@title}, 
+  pdfauthor={\@author},
   pdfsubject={\imprimirpreambulo},
-	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
-	colorlinks=true,    % false: boxed links; true: colored links
+  pdfcreator={LaTeX with iftex},
+  pdfkeywords={}, 
+  colorlinks=true,    % false: boxed links; true: colored links
   linkcolor=black,    % color of internal links
   citecolor=black,    % color of links to bibliography
   filecolor=magenta,  % color of file links
-	urlcolor=black,
-	bookmarksdepth=4
+  urlcolor=black,
+  bookmarksdepth=4
 }
 \makeatother
 
-% --------------------------------------------------- %
-% CONFIGURAÇÃO DO listings %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% CONFIGURAÇÃO DO LISTINGS                                                        %
+% ------------------------------------------------------------------------------- %
 \definecolor{backcolour}{RGB}{255,255,255}
 \definecolor{commentcolour}{RGB}{0,128,0}
 \definecolor{keywordcolour}{RGB}{249,38,114}
@@ -533,32 +519,31 @@
 
 \renewcommand\lstlistingname{Algoritimo} 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{commentcolour},
-    keywordstyle=\color{keywordcolour}\bfseries,
-    numberstyle=\tiny\color{black},
-    stringstyle=\color{stringcolour},
-    emphstyle=\color{red},
-    basicstyle=\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=t,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=4,
-    linewidth=79em
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{commentcolour},
+  keywordstyle=\color{keywordcolour}\bfseries,
+  numberstyle=\tiny\color{black},
+  stringstyle=\color{stringcolour},
+  emphstyle=\color{red},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=t,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=4,
+  linewidth=79em
 }
  
 \lstset{style=mystyle}
 
-% --------------------------------------------------- %
-% ESPAÇAMENTOS ENTRE LINHAS E PARAGRÁFOS %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% ESPAÇAMENTOS ENTRE LINHAS E PARAGRÁFOS                                          %
+% ------------------------------------------------------------------------------- %
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{15pt}
 
@@ -591,10 +576,9 @@
 \addtocontents{lot}{\vspace{15pt}}
 \addtocontents{loq}{\vspace{15pt}}
 
-% --------------------------------------------------- %
-% NUMERAÇÂO DAS PÁGINAS %
-% --------------------------------------------------- %
-
+% ------------------------------------------------------------------------------- %
+% NUMERAÇÂO DAS PÁGINAS                                                           %
+% ------------------------------------------------------------------------------- %
 % Cria um novo estilo de cabeçalhos e rodapés para as capas.
 \makepagestyle{ifes_capas}
 
@@ -645,7 +629,7 @@
   \aliaspagestyle{part}{ifes_textual}
 }
 
-% --------------------------------------------------- %
-% COMPILA O ÍNDICE %
-% --------------------------------------------------- %
+% ------------------------------------------------------------------------------- %
+% COMPILA O ÍNDICE                                                                %
+% ------------------------------------------------------------------------------- %
 \makeindex

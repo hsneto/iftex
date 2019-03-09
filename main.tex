@@ -7,34 +7,27 @@
   % --------------------------------------------------- %
   % CAPAS                                               %
   % --------------------------------------------------- %
-
   % CAPA E FOLHA DE ROSTO
   \capas
   \imprimircapa
   \imprimirfolhaderosto
-
-  % FICHA CATALOGRAFICA
-  % OBS.: Após receber a ficha da biblioteca, comente a macro abaixo:
   \imprimirfichacatalografica
-  % E descomente as demais:
-  % \begin{fichacatalografica}
-  %   \includepdf{fig_ficha_catalografica.pdf}
-  % \end{fichacatalografica}
+  % \includepdf[pages=-]{pre_textuais/ficha.pdf}
 
   % --------------------------------------------------- %
   % ELEMENTOS PRÉ-TEXTUAIS                              %
   % --------------------------------------------------- %
-  
   % APROVAÇÃO, DEDICATÓRIA, AGRADECIMENTOS, EPÍGRAFE
   \pretextual
   \imprimiraprovacao
+  % \includepdf[pages=-]{pre_textuais/aprovacao.pdf}
   \imprimirdedicatoria
   \imprimiragradecimentos
   \imprimirepigrafe
   
   % RESUMO - PT/EN
-  \include{capitulos/resumo}
-
+  \include{pre_textuais/resumo}
+  
   % LISTAS E SUMÁRIO
   \imprimirlistafiguras
   \imprimirlistatabelas
@@ -47,12 +40,10 @@
   % ELEMENTOS TEXTUAIS                                  %
   % --------------------------------------------------- %
   \textual
-  \input{capitulos/introducao}
-  \input{capitulos/ref_teorico}
-  \input{capitulos/conclusao}
-  
-  % Deletar arquivo capitulos/testes.tex
-  \input{capitulos/testes}
+  \input{textuais/introducao}
+  \input{textuais/ref_teorico}
+  \input{textuais/conclusao}
+  \input{textuais/testes} % Deletar arquivo textuais/testes.tex
     
   % --------------------------------------------------- %
   % ELEMENTOS POS-TEXTUAIS %
