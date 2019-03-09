@@ -59,7 +59,10 @@
 
 %% Flush captions to left
 \hangcaption
-\captionstyle[\raggedright]{}
+\captionstyle[\raggedright]{
+
+%% page number footsize
+\renewcomman{\pagenumbering}{\footnotesize\arabic{page}}
 
 % --------------------------------------------------- %
 % CONFIGURAÇÕES DO PACOTE BACKREF %
