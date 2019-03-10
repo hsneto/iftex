@@ -372,7 +372,7 @@
       \vspace*{\fill}
     
       \assinaturaorientador
-      \assinaturacoorientador
+      \ifthenelse{\equal{\imprimircoorientador}{}}{}{\assinaturacoorientador}
       \assinaturaexaminadori
       \assinaturaexaminadorii
       \assinaturaexaminadoriii
