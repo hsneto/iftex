@@ -482,6 +482,25 @@
 }
 
 % ------------------------------------------------------------------------------- %
+% LISTA DE VARIÁVEIS                                                               %
+% ------------------------------------------------------------------------------- %
+
+\newcommand{\listadevariaveisname}{Lista de váriaveis}
+
+\newenvironment{variaveis}{%
+  \pretextualchapter{\listadevariaveisname}
+  \begin{symbols}
+}{%
+  \end{symbols}
+  \cleardoublepage
+}
+
+\providecommand{\imprimirlistavariaveis}{}
+\newcommand{\editarlistavariaveis}[1]{
+  \renewcommand{\imprimirlistavariaveis}{#1}
+}
+
+% ------------------------------------------------------------------------------- %
 % SUMÁRIO                                                                         %
 % ------------------------------------------------------------------------------- %
 \newcommand{\imprimirsumario}{
