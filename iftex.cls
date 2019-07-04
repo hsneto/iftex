@@ -53,7 +53,7 @@
 \usepackage{parskip}			      % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage[caption=false,font=normalsize]{subfig}
+\usepackage[caption=true,position=b,font=normalsize]{subfig}
 
 \usepackage{xparse}             % Mais de um argumento opcional nos macros
 
