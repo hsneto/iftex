@@ -1,4 +1,17 @@
-\input{configuracoes.tex}
+\documentclass[
+  12pt,				    % tamanho da fonte
+  openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+  oneside,			  % para impressão em recto e verso. Oposto a oneside
+  a4paper,			  % tamanho do papel. 
+  chapter=TITLE,  % títulos de capítulos convertidos em letras maiúsculas
+  section=TITLE,  % títulos de seções convertidos em letras maiúsculas
+  english,			  % idioma adicional para hifenização
+  french,				  % idioma adicional para hifenização
+  spanish,			  % idioma adicional para hifenização
+  brazil				  % o último idioma é o principal do documento
+]{iftex}
+
+% Importa as macros do projeto
 \input{macros.tex}
 
 \begin{document}
