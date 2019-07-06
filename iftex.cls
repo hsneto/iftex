@@ -18,7 +18,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[18/12/2018 v1.2 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.3 Modelo de TCC baseado em abnTeX2]
 
 % ------------------------------------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2                                                  %
@@ -40,17 +40,18 @@
 \usepackage[utf8]{inputenc}     % Codificacao do documento
 \usepackage{lastpage}           % Para total de páginas
 \usepackage{mathptmx}           % Usa a fonte times
-\usepackage[T1]{fontenc}		    % Selecao de codigos de fonte
-\usepackage{lastpage}			      % Usado pela Ficha catalográfica
-\usepackage{indentfirst}		    % Indenta o primeiro parágrafo de cada seção
+\usepackage{amsmath}            % Usada para o ambiente equation* e align*
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção
 \usepackage[dvipsnames]{xcolor} % Controle das cores
-\usepackage{graphicx}			      % Inclusão de gráficos
-\usepackage{microtype} 			    % para melhorias de justificação
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
 
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes]{abntex2cite} % Citações padrão ABNT
 
-\usepackage{parskip}			      % espaçamento entre os parágrafos
+\usepackage{parskip}            % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage[caption=true,position=b,font=normalsize]{subfig}
