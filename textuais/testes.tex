@@ -1,12 +1,13 @@
 \chapter{Testes}  
+\label{chap: testes}
 
 \section{Dummy text com figura}
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
 
 \begin{figure}[ht]
-  
   \caption{Mãe, eu formei!}
+  \label{fig: fig1}
   \centering
   \includegraphics[width=0.7\textwidth]{graduation.png}
   \legend{Google images}
@@ -14,14 +15,14 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 \end{figure}
 
 \begin{figure}[ht]
-  
   \caption{Ferramentas utilizadas}
+  \label{fig: fig2}
   \centering
-  \subfloat[overleaf]{\includegraphics[width=0.3\textwidth]{overleaf.png}}
+  \subfloat[overleaf\label{subfig: fig2a}]{\includegraphics[width=0.3\textwidth]{overleaf.png}}
   \hfill
-  \subfloat[latex]{\includegraphics[width=0.3\textwidth]{latex.png}}
+  \subfloat[latex\label{subfig: fig2b}]{\includegraphics[width=0.3\textwidth]{latex.png}}
   \hfill
-  \subfloat[github]{\includegraphics[width=0.3\textwidth]{github.png}}
+  \subfloat[github\label{subfig: fig2c}]{\includegraphics[width=0.3\textwidth]{github.png}}
   \legend{Google images}
   
 \end{figure}
@@ -34,6 +35,7 @@ Segue exemplos de como usar tabelas e quadros.
 
 \begin{table}[ht]
   \caption{Faixa etária dos alunos (número e proporção) do Curso de Saneamento do Ifes – Campus Vitória no no de 2016.}
+  \label{tab: table1}
   \centering
 
   \begin{tabular}{ccc}
@@ -55,6 +57,7 @@ Segue exemplos de como usar tabelas e quadros.
   
 \begin{quadro}[ht]
   \caption{Configuração de microcomputador XP.}
+  \label{quad: quadro1}
   \centering
   
   \resizebox{\textwidth}{!}{%
@@ -79,9 +82,16 @@ Segue exemplos de como usar tabelas e quadros.
 Segue abaixo uma lista de referências:
 
 \begin{itemize}%[nosep]
-  \item Citando o autor: \citeonline{Goodfellow2016}
-  \item Citando o livro: \cite{Goodfellow2016}
-  \item Citando o artigo: \cite{FernandezCaballero2016}
+  \item Citando os autores: \citeonline{Goodfellow2016}
+  \item Citando o artigo/livro: \cite{Goodfellow2016}
+  \item Referência cruzada com capítulos: \autoref{chap: testes}
+  \item Referência cruzada com anexos: \refanexo{anexo: a}
+  \item Referência cruzada com apêndices: \refapendice{apendice: a}
+  \item Referência cruzada com figuras: \autoref{fig: fig1}
+  \item Referência cruzada com sub-figuras: Figura \ref{subfig: fig2a}
+  \item Referência cruzada com tabelas: \autoref{tab: table1}
+  \item Referência cruzada com quadros: \autoref{quad: quadro1}
+  \item Referência cruzada com equações: \autoref{eq: eq1}
 \end{itemize}
     
 \subsubsubsection{Equações e Códigos}
@@ -89,6 +99,7 @@ Segue abaixo uma lista de referências:
 O Teorema de Pitágoras é dado por:
 
 \begin{equation}
+    \label{eq: eq1}
 	a^{2}= b^{2}+c^{2}
 \end{equation}
 

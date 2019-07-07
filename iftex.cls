@@ -157,6 +157,10 @@
   \ifthenelse{\equal{\palavrachaveseis}{}}{}{6. \palavrachaveseis\ }
 }
 
+% Criar comandos específicos para \autoref de anexos e apendices
+\newcommand{\refanexo}[1]{\hyperref[#1]{ANEXO~\ref{#1}}}
+\newcommand{\refapendice}[1]{\hyperref[#1]{APÊNDICE~\ref{#1}}}
+
 % Keywords
 \providecommand{\keywordone}{}
 \providecommand{\keywordtwo}{}
