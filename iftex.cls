@@ -18,7 +18,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[18/12/2018 v1.3 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.3.1 Modelo de TCC baseado em abnTeX2]
 
 % ------------------------------------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2                                                  %
@@ -54,7 +54,9 @@
 \usepackage{parskip}            % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage[caption=true,position=b,font=normalsize]{subfig}
+% \usepackage[caption=false,position=b,font=normalsize]{subfig}
+\usepackage[caption=false,font=normalsize]{subfig}
+\usepackage{etoolbox}
 
 \usepackage{xparse}             % Mais de um argumento opcional nos macros
 
@@ -160,6 +162,15 @@
 % Criar comandos específicos para \autoref de anexos e apendices
 \newcommand{\refanexo}[1]{\hyperref[#1]{ANEXO~\ref{#1}}}
 \newcommand{\refapendice}[1]{\hyperref[#1]{APÊNDICE~\ref{#1}}}
+
+
+% Conserta a referencia de subfiguras
+\makeatletter
+\AtBeginDocument{\patchcmd{\sf@subfloat}% <cmd>
+  {\maincaptiontopfalse}% <search>
+  {\maincaptiontoptrue}% <replace>
+  {}{}}% <success><failure>
+\makeatother
 
 % Keywords
 \providecommand{\keywordone}{}
