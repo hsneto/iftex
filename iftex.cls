@@ -46,8 +46,8 @@
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção
 \usepackage[dvipsnames]{xcolor} % Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
-
+\usepackage{microtype} 			% Para melhorias de justificação
+\usepackage{tabularx}           % Para tabelas
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes]{abntex2cite} % Citações padrão ABNT
 

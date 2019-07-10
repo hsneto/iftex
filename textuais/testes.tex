@@ -40,7 +40,7 @@ Segue exemplos de como usar tabelas e quadros.
 
   \begin{tabular}{ccc}
     \hline
-    \bfseries Faixa Etária & \bfseries Número & Porcentagem\\
+    \bfseries Faixa Etária & \bfseries Número & \bfseries Porcentagem\\
     \hline
     18 a 25 & 7 & 25,7 \\
     26 a 30 & 25 & 70,3 \\
@@ -60,8 +60,7 @@ Segue exemplos de como usar tabelas e quadros.
   \label{quad: quadro1}
   \centering
   
-  \resizebox{\textwidth}{!}{%
-  \begin{tabular}{ll}
+  \begin{tabularx}{\textwidth}{lX}
     \hline
     \bfseries Elemento & \bfseries Especificações\\
     \hline
@@ -72,7 +71,7 @@ Segue exemplos de como usar tabelas e quadros.
     PC 486 DX/2 & Tipo e modelo do computador \\
     840 Mb HD & Capacidade de armazenamento do computador \\
     \hline
-  \end{tabular}}
+  \end{tabularx}
 
   \legend{Barbosa (1999 apud UFES, 2004)}
 \end{quadro}
