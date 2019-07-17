@@ -49,8 +49,8 @@
 \usepackage{microtype} 			% Para melhorias de justificação
 \usepackage{tabularx}           % Para tabelas
 \usepackage[brazilian,hyperpageref]{backref}
-\usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes]{abntex2cite} % Citações padrão ABNT
-
+\usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes, abnt-etal-list=3, abnt-etal-text=it]{abntex2cite} % Citações padrão ABNT
+\usepackage{breakcites}         % Quebra as referências para uma nova linha se necessário
 \usepackage{parskip}            % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
