@@ -18,7 +18,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[18/12/2018 v1.3.2 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.3.3 Modelo de TCC baseado em abnTeX2]
 
 % ------------------------------------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2                                                  %
@@ -96,8 +96,8 @@
 % NOVOS COMANDOS                                                                  %
 % ------------------------------------------------------------------------------- %
 % Legendas
-\newcommand{\source}[1][Elaborado pelo autor (\imprimirdata)]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
-\renewcommand{\legend}[1]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
+\newcommand{\source}[1][Elaborado pelo autor (\imprimirdata).]{\begin{flushleft}\footnotesize Fonte: #1\end{flushleft}}
+\renewcommand{\legend}[1]{\begin{flushleft}\footnotesize Fonte: #1.\end{flushleft}}
 
 % Títulos 
 \renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
