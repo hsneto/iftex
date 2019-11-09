@@ -18,7 +18,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[18/12/2018 v1.3.3 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.3.4 Modelo de TCC baseado em abnTeX2]
 
 % ------------------------------------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2                                                  %
@@ -49,14 +49,15 @@
 \usepackage{microtype} 			% Para melhorias de justificação
 \usepackage{tabularx}           % Para tabelas
 \usepackage[brazilian,hyperpageref]{backref}
-\usepackage[abnt-emphasize=bf, alf, abnt-full-initials=yes, abnt-etal-list=3, abnt-etal-text=it]{abntex2cite} % Citações padrão ABNT
 \usepackage{breakcites}         % Quebra as referências para uma nova linha se necessário
+\usepackage[abnt-emphasize=bf, alf, abnt-full-initials=no, abnt-etal-list=3, abnt-etal-text=it]{abntex2cite} % Citações padrão ABNT
 \usepackage{parskip}            % espaçamento entre os parágrafos
 \usepackage{xcolor}
 \usepackage{listings}
 % \usepackage[caption=false,position=b,font=normalsize]{subfig}
 \usepackage[caption=false,font=normalsize]{subfig}
 \usepackage{etoolbox}
+\usepackage[final]{pdfpages} % Incluir PDFs em texto
 
 \usepackage{xparse}             % Mais de um argumento opcional nos macros
 
@@ -77,9 +78,17 @@
 % ------------------------------------------------------------------------------- %
 % MARGENS DO DOCUMENTO                                                            %
 % ------------------------------------------------------------------------------- %
-\setlrmarginsandblock{3cm}{2cm}{*}
-\setulmarginsandblock{3cm}{2cm}{*}
-\checkandfixthelayout
+
+\usepackage[
+    top = 3.00cm,
+    left = 3.00cm,
+    bottom = 2.00cm,
+    right = 2.00cm
+]{geometry}
+
+% \setlrmarginsandblock{3cm}{2cm}{*}
+% \setulmarginsandblock{3cm}{2cm}{*}
+% \checkandfixthelayout
 
 % ------------------------------------------------------------------------------- %
 % LIDANDO COM WARNINGS                                                            %
@@ -158,11 +167,6 @@
   \ifthenelse{\equal{\palavrachavecinco}{}}{}{5. \palavrachavecinco\ }
   \ifthenelse{\equal{\palavrachaveseis}{}}{}{6. \palavrachaveseis\ }
 }
-
-% Criar comandos específicos para \autoref de anexos e apendices
-\newcommand{\refanexo}[1]{\hyperref[#1]{ANEXO~\ref{#1}}}
-\newcommand{\refapendice}[1]{\hyperref[#1]{APÊNDICE~\ref{#1}}}
-
 
 % Conserta a referencia de subfiguras
 \makeatletter
@@ -441,6 +445,15 @@
     \end{epigrafe}
   }
 }
+
+% ------------------------------------------------------------------------------- %
+% AUTOREF                                                                         %
+% ------------------------------------------------------------------------------- %
+% Criar comandos específicos para \autoref de anexos e apendices
+\newcommand{\refanexo}[1]{\hyperref[#1]{ANEXO~\ref{#1}}}
+\newcommand{\refapendice}[1]{\hyperref[#1]{APÊNDICE~\ref{#1}}}
+
+% \renewcommand*{\equationautorefname}{Equação.}
 
 % ------------------------------------------------------------------------------- %
 % LISTA DE FIGURAS                                                                %
