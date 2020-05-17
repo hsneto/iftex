@@ -18,7 +18,7 @@
 % Normas do IFES ==> https://www.ci.ifes.edu.br/images/stories/2017/biblioteca/caderno_normas_tcc_2017-277_rev_27-11.pdf
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iftex}[18/12/2018 v1.3.4 Modelo de TCC baseado em abnTeX2]
+\ProvidesClass{iftex}[18/12/2018 v1.4 Modelo de TCC baseado em abnTeX2]
 
 % ------------------------------------------------------------------------------- %
 % PARÂMETROS INICIAIS DO ABNTEX2                                                  %
@@ -208,6 +208,19 @@
 \providecommand{\imprimircdd}{999.99}
 \newcommand{\cdd}[1]{\renewcommand{\imprimircdd}{#1}}
 
+% Nome do autor (em formato de referência) para ficha catalográfica
+\providecommand{\imprimirautorcite}{}
+\newcommand{\autorcite}[1]{\renewcommand{\imprimirautorcite}{#1}}
+
+\providecommand{\imprimirfichabiblioteca}{}
+\newcommand{\fichabiblioteca}[1]{\renewcommand{\imprimirfichabiblioteca}{#1}}
+
+\providecommand{\imprimirfichaautor}{}
+\newcommand{\fichaautor}[1]{\renewcommand{\imprimirfichaautor}{#1}}
+
+\providecommand{\imprimirfichatags}{}
+\newcommand{\fichatags}[1]{\renewcommand{\imprimirfichatags}{#1}}
+
 % Assinaturas de orientadores examinadores
 \RenewDocumentCommand{\orientador}{O{Orientador} O{} m O{} m}{
   \ifthenelse{\equal{#1}{}}{
@@ -281,13 +294,13 @@
 % ------------------------------------------------------------------------------- %
 \renewcommand{\imprimirfolhaderosto}{  
   \begin{center}
-    \vspace*{2.0cm}
+    % \vspace*{2.0cm}
 
     \MakeUppercase\imprimirautor
-    \vspace*{2.5cm}
+    \vspace*{6.0cm}
 
     \textbf{\MakeUppercase\imprimirtitulo}
-    \vspace*{\fill}
+    \vspace*{2.0cm}
   \end{center}
 
   % Se o preâmbulo não estiver vazio, crie uma minipage alinhada à direita
@@ -322,12 +335,18 @@
 \providecommand{\imprimirfichacatalografica}{
 
   \vspace*{\fill}
+  
+  \begin{center}
+  \imprimirfichabiblioteca
+  \end{center}
+  
+  \vspace{-15pt}
 
   \fbox{
     \begin{minipage}[c][]{15 cm}
 
       \vspace{12pt}
-      \small{\imprimircutter~\imprimirautor}\\
+      \small{\imprimircutter~\imprimirautorcite}\\
 
       \centering\begin{minipage}[c][]{13 cm}
 
@@ -336,26 +355,36 @@
         
         \imprimirtitulo  / \imprimirautor. --
         \imprimirdata.\\
-
+    
+        \vspace{-10pt}
         \pageref{LastPage} f: il; 30 cm.\\
         
+        \vspace{-10pt}
         \imprimirorientadorsemtitulo\\
 
+        \vspace{-10pt}
         \imprimirtipotrabalho~--~\imprimirinstituicao,
         \imprimircurso, \imprimirdata.\\
 
-        \hspace{0.5cm}
-        \palavraschaveemitens
-        I. \imprimirorientadorcitacao\ 
-        II. \imprimirinstituicao\ 
-        III. \imprimirtitulo
-
+        % \hspace{0.5cm}
+        \vspace{-10pt}
+        \ifthenelse{\equal{\imprimirfichatags}{}}{
+            \palavraschaveemitens
+            I. \imprimirorientadorcitacao\ 
+            II. \imprimirinstituicao\ 
+            III. \imprimirtitulo
+        }{\imprimirfichatags}
+        
         \flushright{CDD \imprimircdd}
         \vspace{12pt}
       \end{minipage}
     \end{minipage}
   }
-
+  
+  \begin{center}
+    \imprimirfichaautor    
+  \end{center}
+  
   \cleardoublepage
 }
 
